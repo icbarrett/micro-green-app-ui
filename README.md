@@ -6,3 +6,5 @@ The React UI for the micro green app
 
 - McDev
 - Lynn
+- Ruhama
+
