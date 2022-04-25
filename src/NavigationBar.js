@@ -9,6 +9,7 @@ import logo from './assets/mglogo4.png';
 
 function NavigationBar() {
   return (
+    //navigation html with bootstrap
     <Navbar bg="light" expand="lg">
     <Container>
       <Navbar.Brand href="#home">
