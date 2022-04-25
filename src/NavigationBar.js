@@ -5,7 +5,7 @@ import './App.css';
 import { Nav, Navbar, Container } from 'react-bootstrap';
 
 //import Logo
-import logo from './assets/mglogo4.png';
+import logo from './assets/ingismicrogreenstransparentV1.png';
 
 function NavigationBar() {
   return (
