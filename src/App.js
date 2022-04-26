@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 //import nav bar component
-import NavigationBar from './NavigationBar.js';
+import NavigationBar from './components/NavigationBar.js';
 
 function App() {
   return (

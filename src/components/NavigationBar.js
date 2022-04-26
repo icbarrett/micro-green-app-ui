@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-import './App.css';
+import '../App.css';
 //import nav bar and container components for react boostrap
 import { Nav, Navbar, Container } from 'react-bootstrap';
 
 //import Logo
-import logo from './assets/ingismicrogreenstransparentV1.png';
+import logo from '../assets/ingismicrogreenstransparentV1.png';
 
 function NavigationBar() {
   return (
