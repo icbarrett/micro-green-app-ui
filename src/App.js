@@ -1,14 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+
+//import nav bar component
+import NavigationBar from './components/NavigationBar.js';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        Hello React
-      </header>
-    </div>
+   <NavigationBar></NavigationBar>
   );
 }
 
