@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
-
-//import nav bar component
 import NavigationBar from './components/NavigationBar.js';
 
-function App() {
+function App (){
   return (
-   <NavigationBar></NavigationBar>
-  );
+    <NavigationBar></NavigationBar>
+  )
+  
 }
 
 export default App;
