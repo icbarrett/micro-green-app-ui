@@ -14,12 +14,6 @@ function NewCalendar() {
         setDate(date)
     }
 
-
-
-    // if (date.getDay() === 0) {
-    //     day = 'Sunday'
-    // }
-
     switch (date.getDay()) {
         case 0:
             day = 'Sunday'
