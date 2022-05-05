@@ -1,6 +1,7 @@
 .react-calendar {
   display: block;
   position: relative;
+  justify-content: right;
   float: right;
   width: 400px;
   max-width: 100%;
@@ -120,9 +121,6 @@
 .react-calendar--selectRange .react-calendar__tile--hover {
   background-color: #e6e6e6;
 }
-.selected-date {
-    margin-left: 45%;
-}
 .main-card {
    background-color: white;
    border-width: 15px;
@@ -132,10 +130,19 @@
     margin: auto;
 }
 .dayView {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
     text-align: center;
     margin: auto;
     width: 50%;
     padding: 10px;
+}
+.task-card {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  
 }

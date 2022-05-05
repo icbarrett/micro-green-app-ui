@@ -2,20 +2,24 @@ import React, { useState } from 'react';
 import { Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './Calendar.css'
+import DayTask from './DayTask';
 
 function DayView({ day, date }) {
 
-   
+    
 
-    return (
+    return ( 
+    <>
         <Card className="main-card">
             <Card.Body>
-                <div>
+                
                     <Card.Title >Daily Tasks for {day}</Card.Title>
-                </div>
-                <Card.Title >{date}</Card.Title>
+                    <Card.Title >{date}</Card.Title>
+                    <Card.Text>{<DayTask />}</Card.Text>
+                
             </Card.Body>
         </Card>
+        </>
     );
 }
 
