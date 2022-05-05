@@ -1,46 +1,58 @@
 import React from 'react'
 
 //import table component styling
-import Table from 'react-bootstrap/Table'
+import {Table, Button, Form} from 'react-bootstrap';
 
 const Inventory = () => {
   return (
     <div>
-      <h1>Inventory</h1>
+      <div class="inventory">
+        <h2 class="item">INVENTORY</h2>
+        <div class="item">
+          <h4>SORT BY</h4>
+          <Form.Select >
+            <option>Lot No.</option>
+            <option>Seed Name</option>
+            <option>Weight</option>
+            <option>Status</option>
+          </Form.Select>
+        </div>
+        <Button variant="dark" class="item">ADD SEEDS</Button>
+      </div>
       <Table striped bordered hover>
-  <thead>
-    <tr>
-      <th>LOT NO.</th>
-      <th>SEED NAME</th>
-      <th>COUNT</th>
-      <th>WEIGHT(g)</th>
-      <th>STATUS</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>Larry the Bird</td>
-      <td>@twitter</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-    </tr>
-  </tbody>
-</Table>
+        <thead>
+          <tr>
+            <th>LOT NO.</th>
+            <th>SEED NAME</th>
+            <th>COUNT</th>
+            <th>WEIGHT(g)</th>
+            <th>STATUS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Dandelion</td>
+            <td>200</td>
+            <td>3</td>
+            <td>Available</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Amaranth</td>
+            <td>300</td>
+            <td>5</td>
+            <td>Available</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Basil Genovese</td>
+            <td>400</td>
+            <td>1.5</td>
+            <td>Planted</td>
+          </tr>
+        </tbody>
+      </Table>
     </div>
   )
 }
