@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import DayView from './components/calendarAssets/DayView.js';
+import DayView from './components/CalendarAssets/DayView.js';
 
 //import nav bar component
 import NavigationBar from './components/NavigationBar.js';

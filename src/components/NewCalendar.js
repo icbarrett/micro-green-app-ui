@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Card } from "react-bootstrap";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css"
-import DayTask from "./calendarAssets/DayTask.js";
-import DayView from "./calendarAssets/DayView.js";
+import DayTask from "./CalendarAssets/DayTask.js";
+import DayView from "./CalendarAssets/DayView.js";
 import data from './dummyData.json'
 
 function NewCalendar() {
