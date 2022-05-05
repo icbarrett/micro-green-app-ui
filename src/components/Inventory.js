@@ -17,7 +17,7 @@ const Inventory = () => {
             <option>Status</option>
           </Form.Select>
         </div>
-        <Button variant="dark" class="item">ADD SEEDS</Button>
+        <Button variant="dark" class="item" id="addSeedsBtn">ADD SEEDS</Button>
       </div>
       <Table striped bordered hover>
         <thead>
