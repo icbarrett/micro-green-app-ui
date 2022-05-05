@@ -11,13 +11,9 @@ function DayView({ day, date }) {
     return ( 
     <>
         <Card className="main-card">
-            <Card.Body>
-                
-                    <Card.Title >Daily Tasks for {day}</Card.Title>
-                    <Card.Title >{date}</Card.Title>
-                    <Card.Text>{<DayTask />}</Card.Text>
-                
-            </Card.Body>
+        <Card.Title >Daily Tasks for {day}</Card.Title>
+        <Card.Title >{date}</Card.Title>
+            <Card.Body>{<DayTask />}</Card.Body>
         </Card>
         </>
     );

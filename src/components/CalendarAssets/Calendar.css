@@ -1,8 +1,5 @@
 .react-calendar {
   display: block;
-  position: relative;
-  justify-content: right;
-  float: right;
   width: 400px;
   max-width: 100%;
   background: white;
@@ -135,7 +132,6 @@
     text-align: center;
     margin: auto;
     width: 50%;
-    padding: 10px;
 }
 .task-card {
   display: flex;

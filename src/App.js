@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import DayView from './components/calendarAssets/DayView.js';
 
 //import nav bar component
 import NavigationBar from './components/NavigationBar.js';
@@ -8,10 +7,10 @@ import NewCalendar from './components/NewCalendar.js';
 
 function App() {
   return (
-    <>
+    <div>
    <NavigationBar />
    <NewCalendar />
-   </>
+   </div>
   );
 }
 

@@ -12,15 +12,15 @@ function DayTask() {
     const [ taskList, setTaskList ] = useState(data)
 
     return(
-        <>
+        <div>
         <Card className="task-card">
             <Card.Body className="card-body">
                 <div className="justify-div">
                 </div>
-                <Card.Text className="card-text">{<TaskList taskList={taskList}/>}</Card.Text>
+                {<TaskList taskList={taskList}/>}
             </Card.Body>
         </Card>
-        </>
+        </div>
     )
 }
 
