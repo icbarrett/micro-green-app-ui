@@ -11,7 +11,7 @@ function App (){
    <NavigationBar />
    <NewCalendar />
    </div>
-  );  
+  );
 }
 
 export default App;
