@@ -13,8 +13,6 @@ function App (){
    <NewCalendar />
    </>
   );
-    <NavigationBar></NavigationBar>
-  )
 }
 
 export default App;
