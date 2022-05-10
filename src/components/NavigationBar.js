@@ -51,7 +51,7 @@ return (
     </div>
     <div>
       <Routes>
-        <Route path = "/" element = {<Home/>}/>
+        <Route path = "/" element = {<NewCalendar/>}/>
         <Route path = "/inventory" element = {<Inventory/>}/>
         <Route path = "/orders" element = {<Orders/>}/>
         <Route path = "/NewCalendar" element = {<NewCalendar/>}/>
