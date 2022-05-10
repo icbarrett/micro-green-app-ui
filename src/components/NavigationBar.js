@@ -14,7 +14,7 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Home from "../components/Home.js";
 import Inventory from "../components/Inventory.js";
 import Orders from "../components/Orders.js";
-import Calendar from "../components/Calendar.js";
+import NewCalendar from "../components/NewCalendar.js";
 
 //wrap react bootstrap element in <LinkContainer> to make it behave like a react router
 import { LinkContainer } from 'react-router-bootstrap';
@@ -26,7 +26,7 @@ return (
         {/* navigation html with bootstrap  */}
         <Navbar bg="light" expand="lg">
           <Container fluid>
-              <LinkContainer to = "/">
+              <LinkContainer to = "/NewCalendar">
             <Navbar.Brand>
               <img 
                 alt="Logo"
@@ -40,10 +40,10 @@ return (
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-                  <LinkContainer to = "/"><Nav.Link>Home</Nav.Link></LinkContainer>
+                  <LinkContainer to = "/NewCalendar"><Nav.Link>Home</Nav.Link></LinkContainer>
                   <LinkContainer to = "/inventory"><Nav.Link>Inventory</Nav.Link></LinkContainer>
                   <LinkContainer to = "/orders"><Nav.Link>Orders</Nav.Link></LinkContainer>
-                  <LinkContainer to = "/calendar"><Nav.Link>Calendar</Nav.Link></LinkContainer>
+                  <LinkContainer to = "/NewCalendar"><Nav.Link>Calendar</Nav.Link></LinkContainer>
               </Nav>
             </Navbar.Collapse>
           </Container>
@@ -54,7 +54,7 @@ return (
         <Route path = "/" element = {<Home/>}/>
         <Route path = "/inventory" element = {<Inventory/>}/>
         <Route path = "/orders" element = {<Orders/>}/>
-        <Route path = "/calendar" element = {<Calendar/>}/>
+        <Route path = "/NewCalendar" element = {<NewCalendar/>}/>
       </Routes>
     </div>
   </Router>
