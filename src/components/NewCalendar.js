@@ -4,20 +4,22 @@ import "react-calendar/dist/Calendar.css"
 import DayView from "./CalendarAssets/DayView.js";
 import data from './anotherDummy.json';
 
-
 function NewCalendar() {
     const [date, setDate] = useState(new Date());
     const prevDate = new Date();
+    const [ taskList, setTaskList ] = useState({})
     let day = ""
+    
 
-    const onChange = date => {
-        setDate(date)
+    const handleChange = date => {
+        setDate(date);
+        updateTaskList()
     }
 
-    // const onClickDay = () => {
-    //     console.log(day)
-        
-    // }
+    const updateTaskList = data => {
+        setTaskList(data)
+    }
+
 
     switch (date.getDay()) {
         case 0:
@@ -44,17 +46,12 @@ function NewCalendar() {
         default:
             break;
     }
-
-    const [ taskList, setTaskList ] = useState({})
     
     return (
         <div>
             <h1 className="heading">Today's Date {prevDate.toDateString()}</h1>
-            <div className="dayView"><DayView day={day} date={date.toLocaleDateString()} taskList={taskList}/>
-            </div>
-            <div className="calendar">
-                <Calendar onChange={onChange} date={date}  onClickDay={() => {setTaskList(data)}}/>
-            </div>
+                <DayView className="dayView" day={day} date={date.toLocaleDateString()} taskList={data}/>
+                <Calendar className="calendar" onChange={handleChange} date={date} />           
         </div>
     );
 }
