@@ -1,26 +1,27 @@
 import React, { useState } from "react";
+import { Card } from "react-bootstrap";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css"
+import DayTask from "./CalendarAssets/DayTask.js";
 import DayView from "./CalendarAssets/DayView.js";
-import data from './anotherDummy.json';
-import moreData from './dummyData.json';
+import data from './dummyData.json'
 
 function NewCalendar() {
     const [date, setDate] = useState(new Date());
     const prevDate = new Date();
-    const [ taskList, setTaskList ] = useState(moreData)
     let day = ""
+
     
 
-    const handleChange = date => {
-        setDate(date);
-        updateTaskList()
+
+    const onChange = date => {
+        setDate(date)
     }
 
-    const updateTaskList = () => {
-        setTaskList(data)
-    }
+    const onClickDay = (e) => {
+        
 
+    }
 
     switch (date.getDay()) {
         case 0:
@@ -47,13 +48,16 @@ function NewCalendar() {
         default:
             break;
     }
-    
+
     return (
-        <div>
+        <>
             <h1 className="heading">Today's Date {prevDate.toDateString()}</h1>
-                <DayView className="dayView" day={day} date={date.toLocaleDateString()} taskList={taskList}/>
-                <Calendar className="calendar" onChange={handleChange} date={date} />           
-        </div>
+            <div className="dayView"><DayView day={day} date={date.toLocaleDateString()} />
+            </div>
+            <div className="calendar">
+                <Calendar onChange={onChange} date={date} onClickDay={onClickDay} />
+            </div>
+        </>
     );
 }
 
