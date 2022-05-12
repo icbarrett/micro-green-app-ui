@@ -4,5 +4,10 @@
       "id":1,
       "completed" : false,
       "task": "Wake up"
-      }]
+      },  {
+        "id":2,
+        "completed": false,
+        "task":"take out trash"}]
+
+
   } 

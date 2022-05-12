@@ -7,7 +7,7 @@ import DayTask from './DayTask';
 function DayView({ day, date, taskList }) {
 
     
-    console.log(taskList)
+    
     return ( 
     <>
         <Card className="main-card">

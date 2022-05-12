@@ -3,11 +3,12 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css"
 import DayView from "./CalendarAssets/DayView.js";
 import data from './anotherDummy.json';
+import moreData from './dummyData.json';
 
 function NewCalendar() {
     const [date, setDate] = useState(new Date());
     const prevDate = new Date();
-    const [ taskList, setTaskList ] = useState({})
+    const [ taskList, setTaskList ] = useState(moreData)
     let day = ""
     
 
@@ -16,7 +17,7 @@ function NewCalendar() {
         updateTaskList()
     }
 
-    const updateTaskList = data => {
+    const updateTaskList = () => {
         setTaskList(data)
     }
 
@@ -50,7 +51,7 @@ function NewCalendar() {
     return (
         <div>
             <h1 className="heading">Today's Date {prevDate.toDateString()}</h1>
-                <DayView className="dayView" day={day} date={date.toLocaleDateString()} taskList={data}/>
+                <DayView className="dayView" day={day} date={date.toLocaleDateString()} taskList={taskList}/>
                 <Calendar className="calendar" onChange={handleChange} date={date} />           
         </div>
     );
