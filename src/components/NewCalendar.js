@@ -10,6 +10,8 @@ function NewCalendar() {
     const prevDate = new Date();
     const [ taskList, setTaskList ] = useState(moreData)
     let day = ""
+
+    console.log(taskList)
     
 
     const handleChange = date => {
@@ -47,11 +49,13 @@ function NewCalendar() {
         default:
             break;
     }
+
+    
     
     return (
         <div>
             <h1 className="heading">Today's Date {prevDate.toDateString()}</h1>
-                <DayView className="dayView" day={day} date={date.toLocaleDateString()} taskList={taskList}/>
+                <DayView className="dayView" day={day} date={date.toDateString} taskList={taskList}/>
                 <Calendar className="calendar" onChange={handleChange} date={date} />           
         </div>
     );

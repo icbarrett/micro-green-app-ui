@@ -5,7 +5,6 @@ import './Calendar.css'
 import DayTask from './DayTask';
 
 function DayView({ day, date, taskList }) {
-
     
     
     return ( 
