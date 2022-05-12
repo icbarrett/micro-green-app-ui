@@ -1,5 +1,3 @@
-
-
 //import nav bar component
 import NavigationBar from './components/NavigationBar.js';
 
