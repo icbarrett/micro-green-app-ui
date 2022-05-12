@@ -3,9 +3,9 @@ import NavigationBar from './components/NavigationBar.js';
 
 function App (){
   return (
-    <>
+    <div>
    <NavigationBar />
-   </>
+   </div>
   );
 }
 
