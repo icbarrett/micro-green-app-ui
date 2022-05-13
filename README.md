@@ -10,3 +10,5 @@ The React UI for the micro green app
 - Barrett
 - Brian
 - Gratton
+
+# practice on new computer
