@@ -5,7 +5,7 @@ import {Table, Button, Form} from 'react-bootstrap';
 
 
 const Inventory = () => {
-  const [seeds, setSeeds] = useState([])
+  const [seeds, setSeeds] = useState();
 
   useEffect(() => {
     // runs 1 time because it's in a `useEffect`
@@ -13,12 +13,12 @@ const Inventory = () => {
   }, []);
 
   const fetchSeeds = () => {
-    fetch('http://localhost:3000/inventory/view')
+    fetch('http://localhost:8080/inventory/view')
       .then((response) => {
         return response.json();
       })
-      .then((text) => {
-        setSeeds(text);
+      .then((json) => {
+        setSeeds(json);
       })
       .catch((error) => {
         console.log(error);
