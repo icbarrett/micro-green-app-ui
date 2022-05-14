@@ -55,8 +55,8 @@ function NewCalendar() {
     return (
         <div>
             <h1 className="heading">Today's Date {prevDate.toDateString()}</h1>
-                <DayView className="dayView" day={day} date={date.toDateString} taskList={taskList}/>
-                <Calendar className="calendar" onChange={handleChange} date={date} />           
+            <DayView className="dayView" day={day} date={date.toLocaleDateString()} taskList={taskList}/>
+                <Calendar className="calendar" onChange={handleChange} date={date} />               
         </div>
     );
 }
