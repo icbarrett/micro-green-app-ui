@@ -12,6 +12,7 @@ const Orders = () => {
           <h4>SORT BY</h4>
           <Form.Select >
             <option>Order ID</option>
+            <option>Customer ID</option>
             <option>Order Date</option>
             <option>Delivery Date</option>
             <option>Status</option>
@@ -24,6 +25,7 @@ const Orders = () => {
         <thead>
           <tr>
             <th>ORDER ID</th>
+            <th>Customer ID</th>
             <th>Order Date</th>
             <th>Delivery Date</th>
             <th>Status</th>
@@ -32,6 +34,7 @@ const Orders = () => {
         </thead>
         <tbody>
           <tr>
+            <td>61</td>
             <td>1</td>
             <td>5/5/2022</td>
             <td>5/30/2022</td>
@@ -39,6 +42,7 @@ const Orders = () => {
             <div><td><Button  variant="dark" class="item" id="addOrderDetails">Order Details</Button></td></div>
           </tr>
           <tr>
+            <td>62</td>
             <td>2</td>
             <td>5/1/2022</td>
             <td>5/15/2022</td>
@@ -46,6 +50,7 @@ const Orders = () => {
             <div><td><Button  variant="dark" class="item" id="addOrderDetails">Order Details</Button></td></div>
           </tr>
           <tr>
+            <td>63</td>
             <td>3</td>
             <td>4/25/2022</td>
             <td>5/8/2022</td>
