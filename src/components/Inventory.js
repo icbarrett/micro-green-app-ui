@@ -15,10 +15,12 @@ const Inventory = () => {
   const fetchSeeds = () => {
     fetch('http://localhost:8080/inventory/view')
       .then((response) => {
+        // return response.text();
         return response.json();
       })
       .then((json) => {
         setSeeds(json);
+        // setSeeds(text);
       })
       .catch((error) => {
         console.log(error);
@@ -46,7 +48,8 @@ const Inventory = () => {
             <th>WEIGHT(g)</th>
           </tr>
         </thead>
-        {seeds.map((seed) => (
+        { seeds.seedName }
+        {/* {seeds.map((seed) => (
           <tbody>
           <tr key={seed.id}>
             <td>{seed.seedName}</td>
@@ -54,7 +57,7 @@ const Inventory = () => {
           </tr>
           </tbody>
         ))
-        }
+        } */}
       </Table>
     </div>
   )
