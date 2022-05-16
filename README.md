@@ -11,4 +11,3 @@ The React UI for the micro green app
 - Brian
 - Gratton
 
-# mpractice on new computer
