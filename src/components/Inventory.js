@@ -5,15 +5,18 @@ import {Table, Button, Form} from 'react-bootstrap';
 
 
 const Inventory = () => {
-  const [seeds, setSeeds] = useState();
+  const [seeds, setSeeds] = useState([]);
 
+  const displaySeeds = seeds.filter((val) => {
+
+  })
   useEffect(() => {
     // runs 1 time because it's in a `useEffect`
     fetchSeeds();
   }, []);
 
   const fetchSeeds = () => {
-    fetch('http://localhost:8080/inventory/view')
+    fetch('http://localhost:8080/inventory')
       .then((response) => {
         // return response.text();
         return response.json();
@@ -26,6 +29,7 @@ const Inventory = () => {
         console.log(error);
       });
   };
+
 
 
   return (
@@ -48,16 +52,18 @@ const Inventory = () => {
             <th>WEIGHT(g)</th>
           </tr>
         </thead>
-        { seeds.seedName }
-        {/* {seeds.map((seed) => (
           <tbody>
-          <tr key={seed.id}>
-            <td>{seed.seedName}</td>
-            <td>{seed.qty}</td>
-          </tr>
+          {seeds.map((item, i) => (
+                    <tr key={i}>
+                        <td>{item.seedName}</td>
+                        <td>{item.qty}</td>
+                    </tr>
+          ))}
+          {/* <tr>
+            <td>{seeds.seed_name}</td>
+            <td>{seeds.qty}</td>
+          </tr> */}
           </tbody>
-        ))
-        } */}
       </Table>
     </div>
   )
