@@ -1,46 +1,81 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import { Link } from 'react-router-dom'
+import ordersService from '../services/ordersService'
 
 //import table component styling
-import {Table, Button, Form} from 'react-bootstrap';
+import {Table, Button} from 'react-bootstrap';
 
 const Orders = () => {
+
+    const [orders, setOrders] = useState([])
+
+    useEffect(() => {
+
+        getAllOrders();
+    }, [])
+
+    const getAllOrders = () => {
+        ordersService.getAllOrders().then((response) => {
+            setOrders(response.data)
+            console.log(response.data);
+        }).catch(error =>{
+            console.log(error);
+        })
+    }
+
+    const deleteOrder = (orderId) => {
+       ordersService.deleteOrder(orderId).then((response) =>{
+        getAllOrders();
+
+       }).catch(error =>{
+           console.log(error);
+       })
+        
+    }
+
   return (
     <div>
-      <div class="orders">
-        <h2 class="item">ORDERS</h2>
-        <div class="item">
+      <div className="orders">
+        <h2 className="item">ORDERS</h2>
+        {/* <div className="item">
           <h4>SORT BY</h4>
           <Form.Select >
             <option>Order ID</option>
-            <option>Customer ID</option>
             <option>Order Date</option>
             <option>Delivery Date</option>
             <option>Status</option>
-            <option>Order Details</option>
           </Form.Select>
-        </div>
-        <Button variant="dark" class="item" id="addOrdersBtn">ADD ORDER</Button>
+        </div> */}
+        <Button variant="dark" className="item" id="addOrdersBtn">ADD ORDER</Button>
       </div>
       <Table striped bordered hover>
         <thead>
           <tr>
             <th>ORDER ID</th>
-            <th>Customer ID</th>
             <th>Order Date</th>
             <th>Delivery Date</th>
-            <th>Status</th>
-            <th>Order Details</th>
+            <th>Active</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>61</td>
-            <td>1</td>
-            <td>5/5/2022</td>
-            <td>5/30/2022</td>
-            <td>Active</td>
-            <div><td><Button  variant="dark" class="item" id="addOrderDetails">Order Details</Button></td></div>
+        {
+            orders.map(
+              orders =>
+          <tr key = {orders.orderId}>
+            <td>{orders.orderId}</td>
+            <td>{orders.orderDate}</td>
+            <td>{orders.deliveryDate}</td>
+            <td>{orders.activeOrder.toString()}</td>
+            <td>
+                                    <Link className="btn btn-info" to={`/orders/update/${orders.orderId}`} >Update</Link>
+                                    <button className = "btn btn-danger" onClick = {() => deleteOrder(orders.orderId)}
+                                    style = {{marginLeft:"10px"}}> Delete</button>
+                                </td>
           </tr>
+                )
+              }
+                  {/* </tbody>
           <tr>
             <td>62</td>
             <td>2</td>
@@ -57,6 +92,8 @@ const Orders = () => {
             <td>Closed</td>
             <div><td><Button  variant="dark" class="item" id="addOrderDetails">Order Details</Button></td></div>
           </tr>
+          )
+          } */}
         </tbody>
       </Table>
     </div>

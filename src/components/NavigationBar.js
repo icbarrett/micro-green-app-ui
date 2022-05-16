@@ -7,21 +7,20 @@ import { Nav, Navbar, Container } from 'react-bootstrap';
 //import Logo
 import logo from '../assets/ingismicrogreenstransparentV1.png';
 
-//import react-router-dom to display pages & navigate between them
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+// //import react-router-dom to display pages & navigate between them
+// import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
-//import pages to create route for home, inventory, orders, calendar
-import Home from "../components/Home.js";
-import Inventory from "../components/Inventory.js";
-import Orders from "../components/Orders.js";
-import NewCalendar from "../components/NewCalendar.js";
+// //import pages to create route for home, inventory, orders, calendar
+// import Home from "../components/Home.js";
+// import Inventory from "../components/Inventory.js";
+// import Orders from "../components/Orders.js";
+// import NewCalendar from "../components/NewCalendar.js";
 
 //wrap react bootstrap element in <LinkContainer> to make it behave like a react router
 import { LinkContainer } from 'react-router-bootstrap';
 
 function NavigationBar () {
 return (
-    <Router>
       <div className='App'>
         {/* navigation html with bootstrap  */}
         <Navbar bg="light" expand="lg">
@@ -49,15 +48,6 @@ return (
           </Container>
       </Navbar>
     </div>
-    <div>
-      <Routes>
-        <Route path = "/" element = {<NewCalendar/>}/>
-        <Route path = "/inventory" element = {<Inventory/>}/>
-        <Route path = "/orders" element = {<Orders/>}/>
-        <Route path = "/NewCalendar" element = {<NewCalendar/>}/>
-      </Routes>
-    </div>
-  </Router>
-)};
+)}
 
 export default NavigationBar;
