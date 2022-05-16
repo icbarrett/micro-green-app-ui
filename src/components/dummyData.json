@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [
   {
       "id": 1,
@@ -30,3 +31,17 @@
       "dueDate": "05-11-2022"
   }
 ]
+=======
+
+[{
+      "id":1,
+      "completed" : false,
+      "task": "Wake up"
+      },  {
+        "id":2,
+        "completed": false,
+        "task":"take out trash"}]
+
+
+ 
+>>>>>>> 7ec8166ed57ecb5d2ab935cbf1e012924043c065
