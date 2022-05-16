@@ -3,7 +3,8 @@ import React from "react"
 const Task = ({task}) => {
     return (
         <div>
-            {task.task}
+            <input type='checkbox'/>&nbsp;
+            {task.taskName}
         </div>
     )
 }

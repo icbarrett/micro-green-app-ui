@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "completed": false,
+        "taskName": "Take nap",
+        "dueDate": "05-11-2022"
+    },
+    {
+        "id": 2,
+        "completed": false,
+        "taskName": "take out trash",
+        "dueDate": "05-11-2022"
+    },
+    {
+        "id": 3,
+        "completed": false,
+        "taskName": "take out trash",
+        "dueDate": "05-11-2022"
+    },
+    {
+        "id": 4,
+        "completed": true,
+        "taskName": "walk dog",
+        "dueDate": "2022-05-16"
+    },
+    {
+        "id": 5,
+        "completed": true,
+        "taskName": "exercise",
+        "dueDate": "2022-05-16"
+    }
+]
