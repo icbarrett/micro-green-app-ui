@@ -2,9 +2,10 @@ import React, { useEffect, useState} from 'react'
 
 //import table component styling
 import {Table, Button, Form} from 'react-bootstrap';
-
+import BootstrapTable from 'react-bootstrap-table-next';
 
 const Inventory = () => {
+  //api connect
   const [seeds, setSeeds] = useState([]);
 
   const displaySeeds = seeds.filter((val) => {
@@ -31,21 +32,61 @@ const Inventory = () => {
   };
 
 
+  //table creation
+  const columns = [{
+    dataField: 'seedName',
+    text: 'SEED NAME', 
+    sort: true
+  }, {
+    dataField: 'qty',
+    text: 'WEIGHT(g)',
+    sort: true
+  }];
+
+  const detailColumns = [{
+    dataField: 'blackoutTime',
+    text: 'Blackout Time'
+  }, {
+    dataField: 'harvestTime',
+    text: 'Harvest Time'
+  }, {
+    dataField: 'seedPresoak',
+    text: 'Presoak'
+  }, {
+    dataField: 'germinationTime',
+    text: 'Germination Time'
+  }, {
+    dataField: 'lot',
+    text: 'Lot'
+  }];
+
+  const expandRow = {
+    renderer: row => (
+      <BootstrapTable 
+        keyField='id'
+        data = { seeds }
+        columns = { detailColumns }
+      />
+    )
+  }
 
   return (
     <div>
       <div class="inventory">
         <h2 class="item">INVENTORY</h2>
-        <div class="item">
-          <h4>SORT BY</h4>
-          <Form.Select >
-            <option>Seed Name</option>
-            <option>Weight</option>
-          </Form.Select>
-        </div>
         <Button variant="dark" class="item" id="addSeedsBtn">ADD SEEDS</Button>
       </div>
-      <Table striped bordered hover>
+
+      <BootstrapTable 
+        keyField='id'
+        data = { seeds }
+        columns = { columns }
+        expandRow = {expandRow}
+      />
+
+
+{/* commented out old table mapping  */}
+      {/* <Table striped bordered hover>
         <thead>
           <tr>
             <th>SEED NAME</th>
@@ -60,7 +101,7 @@ const Inventory = () => {
                     </tr>
           ))}
           </tbody>
-      </Table>
+      </Table> */}
     </div>
   )
 }
