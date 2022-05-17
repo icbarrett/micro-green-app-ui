@@ -3,6 +3,7 @@ import React, { useEffect, useState} from 'react'
 //import table component styling
 import {Table, Button, Form} from 'react-bootstrap';
 import BootstrapTable from 'react-bootstrap-table-next';
+import cellEditFactory from 'react-bootstrap-table2-editor';
 
 const Inventory = () => {
   //api connect
@@ -36,7 +37,8 @@ const Inventory = () => {
   const columns = [{
     dataField: 'seedName',
     text: 'SEED NAME', 
-    sort: true
+    sort: true,
+    editable: false
   }, {
     dataField: 'qty',
     text: 'WEIGHT(g)',
@@ -81,7 +83,8 @@ const Inventory = () => {
         keyField='id'
         data = { seeds }
         columns = { columns }
-        expandRow = {expandRow}
+        expandRow = { expandRow }
+        cellEdit= { cellEditFactory({mode: 'dbclick' })}
       />
 
 
