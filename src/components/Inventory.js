@@ -59,10 +59,6 @@ const Inventory = () => {
                         <td>{item.qty}</td>
                     </tr>
           ))}
-          {/* <tr>
-            <td>{seeds.seed_name}</td>
-            <td>{seeds.qty}</td>
-          </tr> */}
           </tbody>
       </Table>
     </div>
