@@ -15,9 +15,8 @@ function DayTask() {
         <>
         <Card className="task-card">
             <Card.Body className="card-body">
-                <div className="justify-div">
-                </div>
-                <Card.Text className="card-text">{<TaskList taskList={taskList}/>}</Card.Text>
+                {/* <Card.Text className="card-text"></Card.Text> */}
+                <TaskList taskList={taskList}/>
             </Card.Body>
         </Card>
         </>
