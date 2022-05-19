@@ -1,12 +1,32 @@
-
-[{
-      "id":1,
-      "completed" : false,
-      "task": "Wake up"
-      },  {
-        "id":2,
-        "completed": false,
-        "task":"take out trash"}]
-
-
- 
+[
+  {
+      "id": 1,
+      "completed": false,
+      "taskName": "different",
+      "dueDate": "05-11-2022"
+  },
+  {
+      "id": 2,
+      "completed": false,
+      "taskName": "whatever",
+      "dueDate": "05-11-2022"
+  },
+  {
+      "id": 3,
+      "completed": false,
+      "taskName": "take out trash",
+      "dueDate": "05-11-2022"
+  },
+  {
+      "id": 4,
+      "completed": true,
+      "taskName": "walk dog",
+      "dueDate": "05-16-2022"
+  },
+  {
+      "id": 5,
+      "completed": true,
+      "taskName": "exercise",
+      "dueDate": "05-11-2022"
+  }
+]
