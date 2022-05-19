@@ -5,13 +5,6 @@ import './Calendar.css'
 import TaskList from './TaskList';
 
 function DayView({ day, date, taskList }) {
-
-    taskList.forEach(task => {
-        
-    });
-
-    console.log(taskList)
-    
     
     return ( 
     <>

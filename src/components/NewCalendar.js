@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css"
 import DayView from "./CalendarAssets/DayView.js";
@@ -10,8 +10,10 @@ function NewCalendar() {
     const prevDate = new Date();
     const [ tasks, setTasks ] = useState([]);
     let day = "";
-    let todaysDate = date.toISOString().split('T', 1)[0];
-    
+    const [todaysDate, setTodaysDate ] = useState('')
+    useEffect(() => {
+        setTodaysDate(date.toISOString().split('T', 1))
+    }, [])
     
 
     for (let index = 0; index < data.length; index++) {
