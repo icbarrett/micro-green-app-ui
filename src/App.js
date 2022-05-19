@@ -8,7 +8,7 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Inventory from "./components/Inventory.js";
 import Orders from "./components/Orders.js";
 import NewCalendar from "./components/NewCalendar.js";
-import AddUpdateOrders from "./components/AddUpdateOrders"
+import OrdersList from "./components/OrdersList"
 
 function App (){
   return (
@@ -19,9 +19,9 @@ function App (){
     <Routes>
       <Route exact path = "/" element = {<NewCalendar/>}/>
       <Route path = "/inventory" element = {<Inventory/>}/>
-      <Route path = "/orders" element = {<Orders/>}/>
-      <Route path = "/orders/add" element = {<AddUpdateOrders/>}/>
-      <Route path = "/orders/update/orderId" element = {<AddUpdateOrders/>}/>
+      <Route path = "/orders" element = {<OrdersList/>}/>
+      <Route path = "/orders/add" element = {<Orders/>}/>
+      {/* <Route path = "/orders/update/orderId" element = {</>}/> */}
       <Route path = "/NewCalendar" element = {<NewCalendar/>}/>
     </Routes>
   </div>
