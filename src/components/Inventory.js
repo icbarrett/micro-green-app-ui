@@ -1,58 +1,110 @@
-import React from 'react'
+import React, { useEffect, useState} from 'react'
 
 //import table component styling
 import {Table, Button, Form} from 'react-bootstrap';
+import BootstrapTable from 'react-bootstrap-table-next';
+import cellEditFactory from 'react-bootstrap-table2-editor';
 
 const Inventory = () => {
+  //api connect
+  const [seeds, setSeeds] = useState([]);
+
+  const displaySeeds = seeds.filter((val) => {
+
+  })
+  useEffect(() => {
+    // runs 1 time because it's in a `useEffect`
+    fetchSeeds();
+  }, []);
+
+  const fetchSeeds = () => {
+    fetch('http://localhost:8080/inventory')
+      .then((response) => {
+        // return response.text();
+        return response.json();
+      })
+      .then((json) => {
+        setSeeds(json);
+        // setSeeds(text);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+
+  //table creation
+  const columns = [{
+    dataField: 'seedName',
+    text: 'SEED NAME', 
+    sort: true,
+    editable: false
+  }, {
+    dataField: 'qty',
+    text: 'WEIGHT(g)',
+    sort: true
+  }];
+
+  const detailColumns = [{
+    dataField: 'blackoutTime',
+    text: 'Blackout Time'
+  }, {
+    dataField: 'harvestTime',
+    text: 'Harvest Time'
+  }, {
+    dataField: 'seedPresoak',
+    text: 'Presoak'
+  }, {
+    dataField: 'germinationTime',
+    text: 'Germination Time'
+  }, {
+    dataField: 'lot',
+    text: 'Lot'
+  }];
+
+  const expandRow = {
+    renderer: row => (
+      <BootstrapTable 
+        keyField='id'
+        data = { seeds }
+        columns = { detailColumns }
+      />
+    )
+  }
+
   return (
     <div>
       <div class="inventory">
         <h2 class="item">INVENTORY</h2>
-        <div class="item">
-          <h4>SORT BY</h4>
-          <Form.Select >
-            <option>Lot No.</option>
-            <option>Seed Name</option>
-            <option>Weight</option>
-            <option>Status</option>
-          </Form.Select>
-        </div>
         <Button variant="dark" class="item" id="addSeedsBtn">ADD SEEDS</Button>
       </div>
-      <Table striped bordered hover>
+
+      <BootstrapTable 
+        keyField='id'
+        data = { seeds }
+        columns = { columns }
+        expandRow = { expandRow }
+        cellEdit= { cellEditFactory({mode: 'dbclick' })}
+      />
+
+
+{/* commented out old table mapping  */}
+      {/* <Table striped bordered hover>
         <thead>
           <tr>
-            <th>LOT NO.</th>
             <th>SEED NAME</th>
-            <th>COUNT</th>
             <th>WEIGHT(g)</th>
-            <th>STATUS</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Dandelion</td>
-            <td>200</td>
-            <td>3</td>
-            <td>Available</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Amaranth</td>
-            <td>300</td>
-            <td>5</td>
-            <td>Available</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Basil Genovese</td>
-            <td>400</td>
-            <td>1.5</td>
-            <td>Planted</td>
-          </tr>
-        </tbody>
-      </Table>
+          <tbody>
+          {seeds.map((item, i) => (
+                    <tr key={i}>
+                        <td>{item.seedName}</td>
+                        <td>{item.qty}</td>
+                    </tr>
+          ))}
+          </tbody>
+      </Table> */}
     </div>
   )
 }

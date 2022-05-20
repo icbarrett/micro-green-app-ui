@@ -25,7 +25,7 @@ return (
         {/* navigation html with bootstrap  */}
         <Navbar bg="light" expand="lg">
           <Container fluid>
-              <LinkContainer to = "/NewCalendar">
+              <LinkContainer to = "/Home">
             <Navbar.Brand>
               <img 
                 alt="Logo"
@@ -39,7 +39,7 @@ return (
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-                  <LinkContainer to = "/NewCalendar"><Nav.Link>Home</Nav.Link></LinkContainer>
+                  <LinkContainer to = "/Home"><Nav.Link>Home</Nav.Link></LinkContainer>
                   <LinkContainer to = "/inventory"><Nav.Link>Inventory</Nav.Link></LinkContainer>
                   <LinkContainer to = "/orders"><Nav.Link>Orders</Nav.Link></LinkContainer>
                   <LinkContainer to = "/NewCalendar"><Nav.Link>Calendar</Nav.Link></LinkContainer>
