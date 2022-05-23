@@ -21,7 +21,6 @@ function App (){
       <Route path = "/inventory" element = {<Inventory/>}/>
       <Route path = "/orders" element = {<OrdersList/>}/>
       <Route path = "/orders/add" element = {<Orders/>}/>
-      {/* <Route path = "/orders/update/orderId" element = {</>}/> */}
       <Route path = "/NewCalendar" element = {<NewCalendar/>}/>
     </Routes>
   </div>
