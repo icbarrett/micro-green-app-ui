@@ -30,38 +30,6 @@ const Task = ({ clickedDay }) => {
 
      }
 
-     useEffect(() => {
-        fetch('http://localhost:8080/task', {
-            method: "PUT",
-            mode: "cors",
-            headers: {
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "http://localhost:3000",
-                "Access-Control-Allow-Headers": "Origin, Methods, Content-Type",
-                "Access-Control-Allow-Methods": "GET,POST,OPTIONS,DELETE,PUT"
-            },
-            body: JSON.stringify(
-                {
-                    "complete": checked,
-                }
-            )
-  })
-
-  .then(res => {
-      if(res.ok) { console.log("PUT successful") }
-      else { console.log("PUT not successful") }
-      return res
-  })
-  .then(res => res.json())
-  .then(data => console.log(data))
-  .catch(error => console.log(error))
-      
-       
-      }, [checked])
-      
-
-
-
 
     return (
         <div>{tasks.map(task => {
