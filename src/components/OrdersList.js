@@ -33,7 +33,7 @@ export default class OrdersList extends Component{
     render(){
       return (
         <div className = "container">
-           <Link to = {"/orders/add"}><Button variant="dark" class="item" id="addOrdersBtn"><FontAwesomeIcon icon = {faPlusSquare}/>ADD ORDERS</Button></Link>
+           <Link to = {"/orders/create"}><Button variant="dark" class="item" id="addOrdersBtn"><FontAwesomeIcon icon = {faPlusSquare}/>ADD ORDERS</Button></Link>
           <h2 className='"text-center'>List Orders</h2>
         <Table striped bordered hover>
           <thead>
@@ -48,19 +48,20 @@ export default class OrdersList extends Component{
             </tr>
           </thead>
           <tbody>
-            {
-              this.state.orders.length === 0 ?
+            {this.state.orders.length === 0 ? 
             <tr align = "center">
               <td colSpan="6"> Orders</td>
-            </tr> :
+            </tr>:
             this.state.orders.map((order) => (
-              <tr key ="order.id">
+              <tr key ={order.id}>
                 <td>{order.orderId}</td>
                 <td>{order.customer.customerName}</td>
                 <td>{order.orderDate}</td>
                 <td>{order.deliveryDate}</td>
                 {order.orderDetails.map((orderDetail) =>(
-                  <><td>{orderDetail.seed.seedName}</td><td>{orderDetail.tray.qty}</td></>
+                  <><td>{orderDetail.seed.seedName}</td>
+                  <td>{orderDetail.tray.qty}</td>
+                  </>
                 )
                 )}
 
@@ -72,7 +73,7 @@ export default class OrdersList extends Component{
                 </td>
               </tr>
             ))
-    }
+          }
           </tbody>
              </Table>   
                </div>
