@@ -8,14 +8,14 @@
     {
         "id": 2,
         "completed": false,
-        "taskName": "take out trash",
-        "dueDate": "05-11-2022"
+        "taskName": "do your homework",
+        "dueDate": "2022-05-11"
     },
     {
         "id": 3,
         "completed": false,
         "taskName": "take out trash",
-        "dueDate": "05-11-2022"
+        "dueDate": "2022-05-11"
     },
     {
         "id": 4,
@@ -27,6 +27,6 @@
         "id": 5,
         "completed": true,
         "taskName": "exercise",
-        "dueDate": "2022-05-16"
+        "dueDate": "2022-05-26"
     }
 ]
