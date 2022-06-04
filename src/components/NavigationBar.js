@@ -21,7 +21,6 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 function NavigationBar () {
 return (
-    <Router>
       <div className='App'>
         {/* navigation html with bootstrap  */}
         <Navbar bg="light" expand="lg">
@@ -49,15 +48,6 @@ return (
           </Container>
       </Navbar>
     </div>
-    <div>
-      <Routes>
-        <Route path = "/Home" element = {<Home/>}/>
-        <Route path = "/inventory" element = {<Inventory/>}/>
-        <Route path = "/orders" element = {<Orders/>}/>
-        <Route path = "/NewCalendar" element = {<NewCalendar/>}/>
-      </Routes>
-    </div>
-  </Router>
 )};
 
 export default NavigationBar;
