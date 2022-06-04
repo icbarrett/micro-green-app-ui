@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css"
 import DayView from "./CalendarAssets/DayView.js";
+import axios from "axios";
 // import data from './anotherDummy.json';
 
 function NewCalendar() {
