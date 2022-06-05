@@ -9,6 +9,8 @@ import Inventory from "./components/Inventory.js";
 import Orders from "./components/Orders.js";
 import NewCalendar from "./components/NewCalendar.js";
 import OrdersList from "./components/OrdersList"
+import CustomerList from "./components/CustomerList.js";
+import Customer from "./components/Customer.js";
 
 function App (){
   return (
@@ -22,6 +24,8 @@ function App (){
       <Route path = "/orders" element = {<OrdersList/>}/>
       <Route path = "/orders/add" element = {<Orders/>}/>
       {/* <Route path = "/orders/update/orderId" element = {</>}/> */}
+      <Route path = "/customers" element = {<CustomerList/>}/>
+      <Route path = "/customers/add" element = {<Customer/>}/>
       <Route path = "/NewCalendar" element = {<NewCalendar/>}/>
     </Routes>
   </div>
