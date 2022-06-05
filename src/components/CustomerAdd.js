@@ -2,6 +2,7 @@ import { Component } from "react";
 import {Card, Form, Button, Col} from 'react-bootstrap'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUndo, faSave } from "@fortawesome/free-solid-svg-icons";
+import { useHistory } from "react-router-dom"; 
 
 import axios from "axios";
 
@@ -45,6 +46,8 @@ export default class Customer extends Component{
         [event.target.name]:event.target.value
         });
     }
+
+    
   //add new customer form
     render(){
         const {customerName} = this.state;

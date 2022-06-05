@@ -28,7 +28,7 @@ function App (){
       {/* <Route path = "/orders/update/orderId" element = {</>}/> */}
       <Route path = "/customers" element = {<CustomerList/>}/>
       <Route path = "/customers/add" element = {<CustomerAdd/>}/>
-      <Route path = "/customers/update/{customerId}" element = {<CustomerEdit/>}/>
+      <Route path = "/customers/{customerId}" element = {<CustomerEdit/>}/>
       <Route path = "/NewCalendar" element = {<NewCalendar/>}/>
     </Routes>
   </div>

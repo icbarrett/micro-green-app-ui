@@ -38,6 +38,7 @@ export default class CustomerList extends Component{
             <tr>
               <th>Customer Id</th>
               <th>Customer Name</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -52,7 +53,7 @@ export default class CustomerList extends Component{
 
                  <td>
                   <ButtonGroup>
-                    <Link to = {`/customers/update/${customer.customerId}`}> <button size = "sm" variant = "outline-primary"><FontAwesomeIcon icon = {faEdit}/></button></Link>
+                    <Link to = {`/customers/${customer.customerId}`}> <button size = "sm" variant = "outline-primary"><FontAwesomeIcon icon = {faEdit}/></button></Link>
                   <button size = "sm" variant = "outline-primary" style = {{marginLeft:"10px"}}> <FontAwesomeIcon icon = {faTrash}/></button>
                   </ButtonGroup>
                 </td>
