@@ -8,31 +8,31 @@ import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 export default class CustomerList extends Component{
 
-  constructor(props){
-    super(props);
-    this.state = {
-      customer: []
+    constructor(props){
+        super(props);
+        this.state = {
+            customer: []
+        };
+    }
+
+    componentDidMount(){
+        this.getAllCustomers();
     };
-  }
+    
 
-  componentDidMount(){
-    this.getAllCustomers();
-  };
-  
-
-  getAllCustomers(){
-    axios.get("http://localhost:8080/customers")
-      .then(response => response.data)
-      .then((data) => {
-        this.setState({customer:data});
-      });
+    getAllCustomers(){
+        axios.get("http://localhost:8080/customers")
+        .then(response => response.data)
+        .then((data) => {
+            this.setState({customer:data});
+        });
 }
 
     render(){
-      return (
+        return (
         <div className = "container">
-           <Link to = {"/customers/add"}><Button variant="dark" class="item" id="addCustomerBtn"><FontAwesomeIcon icon = {faPlusSquare}/>ADD CUSTOMER</Button></Link>
-          <h2 className='"text-center'>List Customers</h2>
+            <Link to = {"/customers/add"}><Button variant="dark" class="item" id="addCustomerBtn"><FontAwesomeIcon icon = {faPlusSquare}/>ADD CUSTOMER</Button></Link>
+            <h2 className='"text-center'>List Customers</h2>
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -52,7 +52,7 @@ export default class CustomerList extends Component{
 
                  <td>
                   <ButtonGroup>
-                  <button size = "sm" variant = "outline-primary"><FontAwesomeIcon icon = {faEdit}/></button>
+                    <Link to = {`/customers/update/${customer.customerId}`}> <button size = "sm" variant = "outline-primary"><FontAwesomeIcon icon = {faEdit}/></button></Link>
                   <button size = "sm" variant = "outline-primary" style = {{marginLeft:"10px"}}> <FontAwesomeIcon icon = {faTrash}/></button>
                   </ButtonGroup>
                 </td>
