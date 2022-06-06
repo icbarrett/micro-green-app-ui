@@ -25,6 +25,7 @@ export default class CustomerList extends Component{
         .then(response => response.data)
         .then((data) => {
             this.setState({customer:data});
+            console.log(data)
         });
 }
 
@@ -39,26 +40,29 @@ export default class CustomerList extends Component{
             <tr>
               <th>Customer Id</th>
               <th>Customer Name</th>
+              <th>Active</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {this.state.customer.length === 0 ? 
             <tr align = "center">
-              <td colSpan="3"> Customers</td>
+              <td colSpan="4"> Customers</td>
             </tr>:
             this.state.customer.map((customer) => (
               <tr key ={customer.id}>
                 <td>{customer.customerId}</td>
                 <td>{customer.customerName}</td>
+                <td>{customer.activeCustomer}</td>
+
                 <td>
                   <ButtonGroup>
-                    <Link to = {`/customers/${customer.customerId}`}> 
+                    {/* <Link to = {`/customers/${customer.customerId}`}>  */}
                       <button size = "sm" variant = "outline-primary"><FontAwesomeIcon icon = {faEdit}/></button>
-                    </Link>
-                    <Link to = {`/customers/delete/${customer.customerId}`}> 
+                    {/* </Link> */}
+                    {/* <Link to = {`/customers/delete/${customer.customerId}`}>  */}
                       <button size = "sm" variant = "outline-primary" style = {{marginLeft:"10px"}}> <FontAwesomeIcon icon = {faTrash}/></button>
-                    </Link>
+                    {/* </Link> */}
                   </ButtonGroup>
                 </td>
               </tr>
