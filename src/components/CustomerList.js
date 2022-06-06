@@ -31,8 +31,9 @@ export default class CustomerList extends Component{
     render(){
         return (
         <div className = "container">
+          <h2 className='"text-center'>List Customers</h2>
             <Link to = {"/customers/add"}><Button variant="dark" class="item" id="addCustomerBtn"><FontAwesomeIcon icon = {faPlusSquare}/>ADD CUSTOMER</Button></Link>
-            <h2 className='"text-center'>List Customers</h2>
+            
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -44,17 +45,20 @@ export default class CustomerList extends Component{
           <tbody>
             {this.state.customer.length === 0 ? 
             <tr align = "center">
-              <td colSpan="2"> Customers</td>
+              <td colSpan="3"> Customers</td>
             </tr>:
             this.state.customer.map((customer) => (
               <tr key ={customer.id}>
                 <td>{customer.customerId}</td>
                 <td>{customer.customerName}</td>
-
-                 <td>
+                <td>
                   <ButtonGroup>
-                    <Link to = {`/customers/${customer.customerId}`}> <button size = "sm" variant = "outline-primary"><FontAwesomeIcon icon = {faEdit}/></button></Link>
-                  <button size = "sm" variant = "outline-primary" style = {{marginLeft:"10px"}}> <FontAwesomeIcon icon = {faTrash}/></button>
+                    <Link to = {`/customers/${customer.customerId}`}> 
+                      <button size = "sm" variant = "outline-primary"><FontAwesomeIcon icon = {faEdit}/></button>
+                    </Link>
+                    <Link to = {`/customers/delete/${customer.customerId}`}> 
+                      <button size = "sm" variant = "outline-primary" style = {{marginLeft:"10px"}}> <FontAwesomeIcon icon = {faTrash}/></button>
+                    </Link>
                   </ButtonGroup>
                 </td>
               </tr>
