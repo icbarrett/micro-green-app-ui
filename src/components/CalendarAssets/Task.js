@@ -6,13 +6,12 @@ const Task = ({ clickedDay }) => {
 
     let tasks = [];
     const [data, setData] = useState([])
-    const headers = {
-        "Access-Control-Allow-Origin": "http://localhost:3000/"
-    }
+    const [taskId, setTaskId] = useState(1)
+    let putRequestUrl = (taskId) => `/task/update/${taskId}`
    
 
     useEffect(() => {
-        axios.get("http://localhost:8080/task")
+        axios.get("/task")
         .then(res => { 
             setData(res.data)
         })
@@ -33,16 +32,16 @@ const Task = ({ clickedDay }) => {
 
     // console.log(tasks)
 
-    const onChange = (task) => {
+    const onChange = () => {
         setChecked(!checked)
-        axios.patch("http://localhost:8080/task", { 
-            id: 1,
+        axios.put("/task", {
+            
+            id: taskId,
             complete: checked
             
         })
 
      }
-
 
     return (
         <div>{tasks.map(task => {
