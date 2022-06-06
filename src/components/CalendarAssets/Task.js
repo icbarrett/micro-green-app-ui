@@ -7,11 +7,12 @@ const Task = ({ clickedDay }) => {
     let tasks = [];
     const [data, setData] = useState([])
     const [taskId, setTaskId] = useState(1)
-    let putRequestUrl = (taskId) => `/task/update/${taskId}`
+    console.log(taskId)
+    let putRequestUrl = `http://localhost:8080/task/update/${taskId}`
    
 
     useEffect(() => {
-        axios.get("/task")
+        axios.get("http://localhost:8080/task")
         .then(res => { 
             setData(res.data)
         })
@@ -28,15 +29,15 @@ const Task = ({ clickedDay }) => {
         
     }
 
-    const [checked, setChecked] = useState(false)
+    const [checked, setChecked] = useState(true)
 
     // console.log(tasks)
 
     const onChange = () => {
         setChecked(!checked)
-        axios.put("/task", {
-            
-            id: taskId,
+        axios.put(putRequestUrl, {
+           
+            id: 1,
             complete: checked
             
         })
