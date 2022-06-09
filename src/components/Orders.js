@@ -1,9 +1,11 @@
-import { Component } from "react";
+import React, { Component, useState } from "react";
 import {Card, Form, Button, Col} from 'react-bootstrap'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUndo, faSave } from "@fortawesome/free-solid-svg-icons";
+import { faUndo, faSave, faAdd } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 import axios from "axios";
+import {useForm } from "react-hook-form";
 
 export default class Orders extends Component{
 
@@ -16,8 +18,25 @@ export default class Orders extends Component{
   }
 
   initialState = {
-    customerName: '', seedName: '', qty:'', orderDate: '', deliveryDate: ''
-  }
+    customerId:null,
+    orderDate: '',
+    deliveryDate: '',
+    orderDetails: [ 
+      {
+      qty: "",
+    seed: {
+      seedName: ""
+    },
+    tray:{
+      qty:""
+    }
+      }
+    ],
+    customer:{
+      customerName:''
+    }
+    }
+  
 
   resetOrder = ()=>{
     this.setState(()=>this.initialState);
@@ -28,11 +47,20 @@ export default class Orders extends Component{
     event.preventDefault();
 
     const order = {
-      customerName: this.state.customerName,
-      seedName: this.state.seedName,
-      qty: this.state.qty,
       orderDate: this.state.orderDate,
-      deliveryDate: this.state.deliveryDate
+      deliveryDate: this.state.deliveryDate,
+      customer:{
+      customerName: this.state.customerName
+      },
+      orderDetails:[
+        {
+          qty: this.state.qty,
+          // seed:
+          // {
+          //   seedName: this.state.seedName
+          // },
+        }      
+        ]
     };
 
     axios.post("http://localhost:8080/orders/create", order)
@@ -66,35 +94,35 @@ export default class Orders extends Component{
     value = {customerName}
     onChange={this.orderChange}/>
   </Form.Group>  
-  <Form.Group as = {Col}>
+  {/* <Form.Group as = {Col}>
     <Form.Label>Seed Name</Form.Label>
     <Form.Control required autoComplete="off"
      type = "text" name = "seedName"
     placeholder="Enter Seed Name"
     value = {seedName}
     onChange={this.orderChange}/>
-  </Form.Group>
+  </Form.Group> */}
   <Form.Group as = {Col}>
-    <Form.Label>Tray Quantity</Form.Label>
+    <Form.Label>Order Quantity</Form.Label>
     <Form.Control required autoComplete="off"
-     type = "text" name = "qty"
-    placeholder="Enter Tray Quantity"
+     type = "number" name = "qty"
+    placeholder="Enter Order Quantity"
     value = {qty}
     onChange={this.orderChange}/>
   </Form.Group>
   <Form.Group as = {Col}>
     <Form.Label>Order Date</Form.Label>
     <Form.Control required autoComplete="off"
-    type = "text" name = "orderDate"
-    placeholder="Enter Order Date"
+    type = "date" name = "orderDate"
+    placeholder="YYYY-MM-DD"
     value = {orderDate}
     onChange={this.orderChange}/>
   </Form.Group>
   <Form.Group as = {Col}>
     <Form.Label>Delivery Date</Form.Label>
     <Form.Control required autoComplete="off"
-    type = "text" name = "deliveryDate"
-    placeholder="Enter Delivery Date"
+    type = "date" name = "deliveryDate"
+    placeholder="YYYY-MM-DD"
     value = {deliveryDate}
     onChange={this.orderChange}/>
   </Form.Group>
@@ -114,3 +142,6 @@ export default class Orders extends Component{
     ) 
 }
 }
+
+
+  

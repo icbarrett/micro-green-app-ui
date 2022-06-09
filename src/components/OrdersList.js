@@ -4,8 +4,7 @@ import {Table, Button, ButtonGroup} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
-import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faTrash, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 
 export default class OrdersList extends Component{
 
@@ -33,7 +32,7 @@ export default class OrdersList extends Component{
     render(){
       return (
         <div className = "container">
-           <Link to = {"/orders/create"}><Button variant="dark" class="item" id="addOrdersBtn"><FontAwesomeIcon icon = {faPlusSquare}/>ADD ORDERS</Button></Link>
+          <Button variant="dark" class="item" id="addOrdersBtn" onClick={()=>window.open("/orders/create", '_blank')}><FontAwesomeIcon icon = {faPlusSquare}/>ADD ORDERS</Button>
           <h2 className='"text-center'>List Orders</h2>
         <Table striped bordered hover>
           <thead>
@@ -42,8 +41,8 @@ export default class OrdersList extends Component{
               <th>Customer Name</th>
               <th>Order Date</th>
               <th>Delivery Date</th>
+              <th>Order Quantity</th>
               <th>Seed Name</th>
-              <th>Tray Quantity</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -59,8 +58,10 @@ export default class OrdersList extends Component{
                 <td>{order.orderDate}</td>
                 <td>{order.deliveryDate}</td>
                 {order.orderDetails.map((orderDetail) =>(
-                  <><td>{orderDetail.seed.seedName}</td>
-                  <td>{orderDetail.tray.qty}</td>
+                  <>
+                  <td>{orderDetail.qty}</td>
+                  <td>{orderDetail.seed.seedName}</td>
+                  
                   </>
                 )
                 )}
