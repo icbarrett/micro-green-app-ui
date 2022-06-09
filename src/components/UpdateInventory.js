@@ -15,8 +15,9 @@ export default class UpdateInventory extends Component{
     this.submitInventory = this.submitInventory.bind(this);
   }
 
+
   initialState = {
-    seedName: '',  qty:''
+    qty:''
   }
 
   resetInventory = ()=>{
@@ -31,7 +32,9 @@ export default class UpdateInventory extends Component{
       qty: this.state.qty
     };
 
-    axios.post("http://localhost:8080/inventory/update/{seedId}", inventory)
+
+
+    axios.post(`http://localhost:8080/inventory/update/${this.seedId}`, inventory)
     .then(response => {
       if(response.data != null){
         this.setState(this.initialState);

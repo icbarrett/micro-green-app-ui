@@ -28,12 +28,39 @@ export default class InventoryList extends Component{
   });
 }
 
+  updateQuantity(seedId) {
+    let quantity = window.prompt("Please enter a seed quanitity", 0);
+    if (quantity == null || quantity == "") {
+      alert("you have not changed the quantity");
+    } else {
+      let quantityNum = Number(quantity);
+      axios.post(`http://localhost:8080/update/${seedId}`, {qty: quantityNum}).then(response => response.data)
+      .then((data) => {
+        this.setState({inventory:data});
+      });  
+    }
+  }
+
+  deleteSeed(seedId) {
+    let txt = ""
+    if(window.confirm("Are you sure you would like to delete the seed?")) {
+      axios.post(`http://localhost:8080/delete/${seedId}`).then(response => response.data)
+      .then((data) => {
+        this.setState({inventory:data});
+      })
+      txt = "You have deleted the seed";
+    } else {
+      txt = "You have not deleted the seed";
+    }
+    alert(txt);
+  }
+
 
     render(){
       return (
         <div className = "container">
            <Link to = {"/inventory/add"}><Button variant="dark" class="item" id="addInventoryBtn"><FontAwesomeIcon icon = {faPlusSquare}/>ADD INVENTORY</Button></Link>
-          <h2 className='"text-center'>List Inventory</h2>
+          <h2 className='"text-center'>Inventory</h2>
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -53,8 +80,8 @@ export default class InventoryList extends Component{
 
                  <td>
                   <ButtonGroup>
-                  <Link to = {"/inventory/update/{seedId}"}><button size = "sm" variant = "outline-primary"><FontAwesomeIcon icon = {faEdit}/></button></Link>
-                  <Link to = {"/inventory/delete/{seedId}"}><button size = "sm" variant = "outline-primary" style = {{marginLeft:"10px"}}> <FontAwesomeIcon icon = {faTrash}/></button></Link>
+                  <button size = "sm" variant = "outline-primary" onClick={this.updateQuantity(seed.id)}><FontAwesomeIcon icon = {faEdit}/></button>
+                  <button size = "sm" variant = "outline-primary" style = {{marginLeft:"10px"}} onClick={this.deleteSeed(seed.id)}> <FontAwesomeIcon icon = {faTrash}/></button>
                   </ButtonGroup>
                 </td>
               </tr>

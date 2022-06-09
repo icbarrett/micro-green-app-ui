@@ -37,7 +37,7 @@ return (
             </Navbar.Brand>
             </LinkContainer>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
+            <Navbar.Collapse id="basic-navbar-nav"> 
               <Nav className="me-auto">
                   <LinkContainer to = "/Home"><Nav.Link>Home</Nav.Link></LinkContainer>
                   <LinkContainer to = "/inventory"><Nav.Link>Inventory</Nav.Link></LinkContainer>
