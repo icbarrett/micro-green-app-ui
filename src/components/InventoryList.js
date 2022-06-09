@@ -80,8 +80,8 @@ export default class InventoryList extends Component{
 
                  <td>
                   <ButtonGroup>
-                  <button size = "sm" variant = "outline-primary" onClick={this.updateQuantity(seed.id)}><FontAwesomeIcon icon = {faEdit}/></button>
-                  <button size = "sm" variant = "outline-primary" style = {{marginLeft:"10px"}} onClick={this.deleteSeed(seed.id)}> <FontAwesomeIcon icon = {faTrash}/></button>
+                  <button size = "sm" variant = "outline-primary" onClick={() => { this.updateQuantity(seed.id)}}><FontAwesomeIcon icon = {faEdit}/></button>
+                  <button size = "sm" variant = "outline-primary" style = {{marginLeft:"10px"}} onClick={() => { this.deleteSeed(seed.id)}}> <FontAwesomeIcon icon = {faTrash}/></button>
                   </ButtonGroup>
                 </td>
               </tr>
