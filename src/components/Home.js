@@ -23,24 +23,7 @@ backgroundRepeat: 'no-repeat',
 };
 
   return (
-    <div style={{
-      width: "100%"
-    }}>
-      <div style={masthead}>
-    </div>
-    <div style={{
-      backgroundColor: "white"
-      }}>
-      <h2 style= {{
-        textAlign: "center",
-        fontStyle: "italic"
-      }}>Ingi's Microgreens</h2>
-      <h4 style= {{
-        textAlign: "center",
-        fontStyle: "italic"
-      }}>Growers of non-GMO microgreens, shoots, and wheatgrass. Organic, sustainable, and nutritous produce born and raised in Frankemuth, Michigan.</h4>
-    </div>
-    </div>
+    <div></div>
     
   )
 }
