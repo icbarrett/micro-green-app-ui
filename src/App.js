@@ -14,6 +14,10 @@ import UpdateInventory from "./components/UpdateInventory.js";
 import Orders from "./components/Orders.js";
 import NewCalendar from "./components/NewCalendar.js";
 import OrdersList from "./components/OrdersList"
+import CustomerList from "./components/CustomerList.js";
+import CustomerAdd from "./components/CustomerAdd.js";
+import CustomerEdit from "./components/CustomerEdit.js";
+
 
 //import banner
 import Banner from 'react-js-banner';
@@ -56,6 +60,11 @@ function App (){
       <Route path = "/inventory/delete/{seedId}" element = {<Inventory/>}/>
       <Route path = "/inventory/update/{seedId}" element = {<Inventory/>}/>
       <Route path = "/orders" element = {<OrdersList/>}/>
+      <Route path = "/orders/add" element = {<Orders/>}/>
+      {/* <Route path = "/orders/update/orderId" element = {</>}/> */}
+      <Route path = "/customers" element = {<CustomerList/>}/>
+      <Route path = "/customers/add" element = {<CustomerAdd/>}/>
+      <Route path = "/customers/{customerId}" element = {<CustomerEdit/>}/>
       <Route path = "/orders/create" element = {<Orders/>}/> 
       <Route path = "/NewCalendar" element = {<NewCalendar/>}/>
       <Route path = "/Home" element = {<Home/>}/>
