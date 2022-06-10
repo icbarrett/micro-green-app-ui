@@ -16,16 +16,37 @@ import NewCalendar from "./components/NewCalendar.js";
 
 //import banner
 import Banner from 'react-js-banner';
+import homepagepic from "./assets/homepagepicture.jpeg";
 
 
 function App (){
 
- 
+  const masthead={
+    backgroundImage:`url(${homepagepic})`,
+    height: "50vh",
+    marginTop:'-70px',
+    fontSize:'50px',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat'
+    };
 
   return (
     <div>
     <Router>
     <NavigationBar />
+    <div style={masthead}>
+      <h2 style= {{
+        textAlign: "center",
+        color: 'black',
+        fontStyle: "italic",
+        paddingTop: "20%"
+      }}>Ingi's Microgreens</h2>
+      <h4 style= {{
+        textAlign: "center",
+        color: 'black',
+        fontStyle: "italic"
+      }}>Growers of non-GMO microgreens, shoots, and wheatgrass. Organic, sustainable, and nutritous produce born and raised in Frankemuth, Michigan.</h4>
+    </div>
     <div className='container'>
     <Routes>
       <Route exact path = "/" element = {<NewCalendar/>}/>
@@ -38,6 +59,7 @@ function App (){
       <Route path = "/NewCalendar" element = {<NewCalendar/>}/>
       <Route path = "/Home" element = {<Home/>}/>
     </Routes>
+    
   </div>
 </Router>  
 

@@ -16,7 +16,7 @@ export default class Inventory extends Component{
   }
 
   initialState = {
-    seedName: '',  qty:''
+    seedName: '',  qty:0, seedingDensity: 0
   }
 
   resetInventory = ()=>{
@@ -29,7 +29,11 @@ export default class Inventory extends Component{
 
     const inventory = {
       seedName: this.state.seedName,
-      qty: this.state.qty
+      qty: this.state.qty,
+      seedingDensity: this.state.seedingDensity,
+      // seedPresoak: this.state.seedPresoak,
+      // blackoutTime: this.state.blackoutTime,
+      // harvestTime: this.state.harvestTime
     };
 
     axios.post("http://localhost:8080/inventory/add", inventory)
@@ -49,7 +53,8 @@ export default class Inventory extends Component{
   }
   //add new seed form
   render(){
-    const {seedName, qty} = this.state;
+    // const {seedName, qty, seedingDensity, seedPresoak, blackoutTime, harvestTime} = this.state;
+    const {seedName, qty, seedingDensity} = this.state;
 
     return (
       <Card className="border border-dark ">
@@ -67,11 +72,43 @@ export default class Inventory extends Component{
   <Form.Group as = {Col}>
     <Form.Label>Quantity</Form.Label>
     <Form.Control required autoComplete="off"
-     type = "text" name = "qty"
+     type = "number" name = "qty"
     placeholder="Enter Quantity"
     value = {qty}
     onChange={this.inventoryChange}/>
   </Form.Group>
+  <Form.Group as = {Col}>
+    <Form.Label>Seeding Density</Form.Label>
+    <Form.Control required autoComplete="off"
+     type = "number" name = "seedingDensity"
+    placeholder="Enter Seeding Density"
+    value = {seedingDensity}
+    onChange={this.inventoryChange}/>
+  </Form.Group>
+  {/* <Form.Group as = {Col}>
+    <Form.Label>Seed Presoak</Form.Label>
+    <Form.Control required autoComplete="off"
+     type = "number" name = "seedPresoak"
+    placeholder="Enter Seed Presoak"
+    value = {seedPresoak}
+    onChange={this.inventoryChange}/>
+  </Form.Group>
+  <Form.Group as = {Col}>
+    <Form.Label>Blackout Time</Form.Label>
+    <Form.Control required autoComplete="off"
+     type = "number" name = "blackoutTime"
+    placeholder="Enter Blackout Time"
+    value = {blackoutTime}
+    onChange={this.inventoryChange}/>
+  </Form.Group>
+  <Form.Group as = {Col}>
+    <Form.Label>Harvest Time</Form.Label>
+    <Form.Control required autoComplete="off"
+     type = "number" name = "harvestTime"
+    placeholder="Enter Harvest Time"
+    value = {harvestTime}
+    onChange={this.inventoryChange}/>
+  </Form.Group> */}
   </Card.Body>
 <Card.Footer>
   <Button  variant = "success" type="submit">
@@ -94,115 +131,6 @@ export default class Inventory extends Component{
 
 
 
-// import React, { useEffect, useState} from 'react'
-
-// //import table component styling
-// import {Table, Button, Form} from 'react-bootstrap';
-// import BootstrapTable from 'react-bootstrap-table-next';
-// import cellEditFactory from 'react-bootstrap-table2-editor';
-
-// const Inventory = () => {
-//   //api connect
-//   const [seeds, setSeeds] = useState([]);
-
-//   const displaySeeds = seeds.filter((val) => {
-
-//   })
-//   useEffect(() => {
-//     // runs 1 time because it's in a `useEffect`
-//     fetchSeeds();
-//   }, []);
-
-//   const fetchSeeds = () => {
-//     fetch('http://localhost:8080/inventory')
-//       .then((response) => {
-//         // return response.text();
-//         return response.json();
-//       })
-//       .then((json) => {
-//         setSeeds(json);
-//         // setSeeds(text);
-//       })
-//       .catch((error) => {
-//         console.log(error);
-//       });
-//   };
 
 
-//   //table creation
-//   const columns = [{
-//     dataField: 'seedName',
-//     text: 'SEED NAME', 
-//     sort: true,
-//     editable: false
-//   }, {
-//     dataField: 'qty',
-//     text: 'WEIGHT(g)',
-//     sort: true
-//   }];
 
-//   const detailColumns = [{
-//     dataField: 'blackoutTime',
-//     text: 'Blackout Time'
-//   }, {
-//     dataField: 'harvestTime',
-//     text: 'Harvest Time'
-//   }, {
-//     dataField: 'seedPresoak',
-//     text: 'Presoak'
-//   }, {
-//     dataField: 'germinationTime',
-//     text: 'Germination Time'
-//   }, {
-//     dataField: 'lot',
-//     text: 'Lot'
-//   }];
-
-//   const expandRow = {
-//     renderer: row => (
-//       <BootstrapTable 
-//         keyField='id'
-//         data = { seeds }
-//         columns = { detailColumns }
-//       />
-//     )
-//   }
-
-//   return (
-//     <div>
-//       <div class="inventory">
-//         <h2 class="item">INVENTORY</h2>
-//         <Button variant="dark" class="item" id="addSeedsBtn">ADD SEEDS</Button>
-//       </div>
-
-//       <BootstrapTable 
-//         keyField='id'
-//         data = { seeds }
-//         columns = { columns }
-//         expandRow = { expandRow }
-//         cellEdit= { cellEditFactory({mode: 'dbclick' })}
-//       />
-
-
-// {/* commented out old table mapping  */}
-//       {/* <Table striped bordered hover>
-//         <thead>
-//           <tr>
-//             <th>SEED NAME</th>
-//             <th>WEIGHT(g)</th>
-//           </tr>
-//         </thead>
-//           <tbody>
-//           {seeds.map((item, i) => (
-//                     <tr key={i}>
-//                         <td>{item.seedName}</td>
-//                         <td>{item.qty}</td>
-//                     </tr>
-//           ))}
-//           </tbody>
-//       </Table> */}
-//     </div>
-//   )
-// }
-
-// export default Inventory;

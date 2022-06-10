@@ -10,6 +10,7 @@ const Home = () => {
     fontSize:'50px',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
+    opacity: 0.6
     };
 
 const titleBanner = {
@@ -22,11 +23,13 @@ backgroundRepeat: 'no-repeat',
 };
 
   return (
-    <div>
+    <div style={{
+      width: "100%"
+    }}>
       <div style={masthead}>
     </div>
     <div style={{
-      backgroundColor: "#ebebeb"
+      backgroundColor: "white"
       }}>
       <h2 style= {{
         textAlign: "center",
