@@ -5,7 +5,7 @@ import { faUndo, faSave } from "@fortawesome/free-solid-svg-icons";
 
 import axios from "axios";
 
-export default class Inventory extends Component{
+export default class DeleteInventory extends Component{
 
   constructor(props){
     super(props);
@@ -16,7 +16,7 @@ export default class Inventory extends Component{
   }
 
   initialState = {
-    seedName: '',  qty:0, seedingDensity: 0
+    seedName: '',  qty:''
   }
 
   resetInventory = ()=>{
@@ -28,19 +28,14 @@ export default class Inventory extends Component{
     event.preventDefault();
 
     const inventory = {
-      seedName: this.state.seedName,
-      qty: this.state.qty,
-      seedingDensity: this.state.seedingDensity,
-      // seedPresoak: this.state.seedPresoak,
-      // blackoutTime: this.state.blackoutTime,
-      // harvestTime: this.state.harvestTime
+      qty: this.state.qty
     };
 
-    axios.post("http://localhost:8080/inventory/add", inventory)
+    axios.post("http://localhost:8080/inventory/delete/{seedId}", inventory)
     .then(response => {
       if(response.data != null){
         this.setState(this.initialState);
-        alert("Seed saved successfully");
+        alert("Seed deleted successfully");
       }
     });
   }
@@ -53,8 +48,7 @@ export default class Inventory extends Component{
   }
   //add new seed form
   render(){
-    // const {seedName, qty, seedingDensity, seedPresoak, blackoutTime, harvestTime} = this.state;
-    const {seedName, qty, seedingDensity} = this.state;
+    const {seedName, qty} = this.state;
 
     return (
       <Card className="border border-dark ">
@@ -72,43 +66,11 @@ export default class Inventory extends Component{
   <Form.Group as = {Col}>
     <Form.Label>Quantity</Form.Label>
     <Form.Control required autoComplete="off"
-     type = "number" name = "qty"
+     type = "text" name = "qty"
     placeholder="Enter Quantity"
     value = {qty}
     onChange={this.inventoryChange}/>
   </Form.Group>
-  <Form.Group as = {Col}>
-    <Form.Label>Seeding Density</Form.Label>
-    <Form.Control required autoComplete="off"
-     type = "number" name = "seedingDensity"
-    placeholder="Enter Seeding Density"
-    value = {seedingDensity}
-    onChange={this.inventoryChange}/>
-  </Form.Group>
-  {/* <Form.Group as = {Col}>
-    <Form.Label>Seed Presoak</Form.Label>
-    <Form.Control required autoComplete="off"
-     type = "number" name = "seedPresoak"
-    placeholder="Enter Seed Presoak"
-    value = {seedPresoak}
-    onChange={this.inventoryChange}/>
-  </Form.Group>
-  <Form.Group as = {Col}>
-    <Form.Label>Blackout Time</Form.Label>
-    <Form.Control required autoComplete="off"
-     type = "number" name = "blackoutTime"
-    placeholder="Enter Blackout Time"
-    value = {blackoutTime}
-    onChange={this.inventoryChange}/>
-  </Form.Group>
-  <Form.Group as = {Col}>
-    <Form.Label>Harvest Time</Form.Label>
-    <Form.Control required autoComplete="off"
-     type = "number" name = "harvestTime"
-    placeholder="Enter Harvest Time"
-    value = {harvestTime}
-    onChange={this.inventoryChange}/>
-  </Form.Group> */}
   </Card.Body>
 <Card.Footer>
   <Button  variant = "success" type="submit">
@@ -125,12 +87,3 @@ export default class Inventory extends Component{
     ) 
 }
 }
-
-
-
-
-
-
-
-
-
