@@ -1,8 +1,9 @@
-
 import { Component } from 'react';
-import {Table, Button, Form, ButtonGroup} from 'react-bootstrap';
+import {Table, Button, ButtonGroup} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faTrash, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 
 export default class OrdersList extends Component{
 
@@ -12,6 +13,7 @@ export default class OrdersList extends Component{
       orders: []
     };
   }
+
   componentDidMount(){
     this.getAllOrders();
     };
@@ -29,40 +31,49 @@ export default class OrdersList extends Component{
     render(){
       return (
         <div className = "container">
-           <Link to = {"/orders/add"}><Button variant="dark" class="item" id="addOrdersBtn">ADD ORDERS</Button></Link>
+          <Button variant="dark" class="item" id="addOrdersBtn" onClick={()=>window.open("/orders/create", '_blank')}><FontAwesomeIcon icon = {faPlusSquare}/>ADD ORDERS</Button>
           <h2 className='"text-center'>List Orders</h2>
         <Table striped bordered hover>
           <thead>
             <tr>
               <th>Order ID</th>
+              <th>Customer Name</th>
               <th>Order Date</th>
               <th>Delivery Date</th>
-              <th>Active Order</th>
+              <th>Order Quantity</th>
+              {/* <th>Seed Name</th> */}
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {
-              this.state.orders.length === 0 ?
+            {this.state.orders.length === 0 ? 
             <tr align = "center">
               <td colSpan="6"> Orders</td>
-            </tr> :
+            </tr>:
             this.state.orders.map((order) => (
-              <tr key ="order.id">
+              <tr key ={order.id}>
                 <td>{order.orderId}</td>
+                <td>{order.customer.customerName}</td>
                 <td>{order.orderDate}</td>
                 <td>{order.deliveryDate}</td>
-                <td>{order.activeOrder.toString()}</td>
-                <td>
+                {order.orderDetails.map((orderDetail) =>(
+                  <>
+                  <td>{orderDetail.qty}</td>
+                  {/* <td>{orderDetail.seed.seedName}</td> */}
+                  
+                  </>
+                )
+                )}
+
+                 <td>
                   <ButtonGroup>
-                  <button className="btn btn-info">Update</button>
-                  <button className = "btn btn-danger" style = {{marginLeft:"10px"}}> Delete</button>
-                  <button className="btn btn-info" style = {{marginLeft:"10px"}}>Order Details</button>
+                  <button size = "sm" variant = "outline-primary"><FontAwesomeIcon icon = {faEdit}/></button>
+                  <button size = "sm" variant = "outline-primary" style = {{marginLeft:"10px"}}> <FontAwesomeIcon icon = {faTrash}/></button>
                   </ButtonGroup>
                 </td>
               </tr>
             ))
-    }
+          }
           </tbody>
              </Table>   
                </div>
