@@ -2,56 +2,29 @@ import axios from "axios";
 import React, { useState, useEffect } from "react"
 
 
-const Task = ({ clickedDay }) => {
+const Task = ({ id, task, complete }) => {
+    
+    let putRequestUrl = `http://localhost:8080/task/update/${id}`;
 
-    let tasks = [];
-    const [data, setData] = useState([])
-    const [taskId, setTaskId] = useState(1)
-    console.log(taskId)
-    let putRequestUrl = `http://localhost:8080/task/update/${taskId}`
-   
-
-    useEffect(() => {
-        axios.get("http://localhost:8080/task")
-        .then(res => { 
-            setData(res.data)
-        })
-        .catch(err => console.error(err))
-      }, [])
-      
-
-      for (let index = 0; index < data.length; index++) {
-        
-        if (data[index].dueDate === clickedDay) {
-            tasks.push(data[index])
-            
-        }
-        
-    }
-
-    const [checked, setChecked] = useState(true)
-
-    // console.log(tasks)
+    const [checked, setChecked] = useState(complete);
 
     const onChange = () => {
         setChecked(!checked)
+        console.log(checked)
         axios.put(putRequestUrl, {
-           
-            id: 1,
-            complete: checked
-            
+            id: id,
+            complete: !checked
         })
-
-     }
+     };
 
     return (
-        <div>{tasks.map(task => {
-            return (<>
-                <input key={task.id} type='checkbox' defaultChecked={checked} onChange={onChange}/>
-                {task.task}
-                </>
-            )
-        })}</div>
-    )
+        <div>
+                <input type='checkbox' key={id} name={task}
+                value={task} defaultChecked={complete} onChange={onChange}/>
+                &nbsp; 
+                {task}
+                <br></br>            
+        </div>
+    );
 }
 export default Task
