@@ -19,14 +19,11 @@ function DayView({ day, date, clickedDay }) {
         .catch(err => console.error(err))
       }, [])
       
-
       for (let index = 0; index < data.length; index++) {
         
         if (data[index].dueDate === clickedDay) {
-            tasks.push(data[index])
-            
+            tasks.push(data[index])   
         }
-        
     }
 
     return ( 
