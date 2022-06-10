@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import {Table, Button, ButtonGroup} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
