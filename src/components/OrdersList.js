@@ -41,7 +41,7 @@ export default class OrdersList extends Component{
               <th>Order Date</th>
               <th>Delivery Date</th>
               <th>Order Quantity</th>
-              {/* <th>Seed Name</th> */}
+              <th>Seed Name</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -59,7 +59,7 @@ export default class OrdersList extends Component{
                 {order.orderDetails.map((orderDetail) =>(
                   <>
                   <td>{orderDetail.qty}</td>
-                  {/* <td>{orderDetail.seed.seedName}</td> */}
+                  <td>{orderDetail.seed.seedName}</td>
                   
                   </>
                 )
