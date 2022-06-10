@@ -42,14 +42,14 @@ function App (){
     <div style={masthead}>
       <h2 style= {{
         textAlign: "center",
-        color: 'black',
+        color: 'white',
         fontStyle: "italic",
-        paddingTop: "20%"
+        paddingTop: "20%",
       }}>Ingi's Microgreens</h2>
       <h4 style= {{
         textAlign: "center",
-        color: 'black',
-        fontStyle: "italic"
+        color: 'white',
+        fontStyle: "italic",
       }}>Growers of non-GMO microgreens, shoots, and wheatgrass. Organic, sustainable, and nutritous produce born and raised in Frankemuth, Michigan.</h4>
     </div>
     <div className='container'>

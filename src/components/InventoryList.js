@@ -13,6 +13,7 @@ export default class InventoryList extends Component{
     this.state = {
       inventory: []
     };
+    this.updateQuantity = this.updateQuantity.bind(this);
   }
 
   componentDidMount(){
@@ -29,22 +30,27 @@ export default class InventoryList extends Component{
 }
 
   updateQuantity(seedId) {
-    let quantity = window.prompt("Please enter a seed quanitity", 0);
+
+
+    let quantity = window.prompt("Please input seed quantity change", 0);
     if (quantity == null || quantity == "") {
       alert("you have not changed the quantity");
     } else {
       let quantityNum = Number(quantity);
-      axios.post(`http://localhost:8080/update/${seedId}`, {qty: quantityNum}).then(response => response.data)
-      .then((data) => {
-        this.setState({inventory:data});
+      axios.post(`http://localhost:8080/inventory/update/${seedId}`, {qty: quantityNum}).then(response => response.data)
+      .then(response =>  {
+          this.setState({
+          qty: response.data
+        });
       });  
+      
     }
   }
 
   deleteSeed(seedId) {
     let txt = ""
     if(window.confirm("Are you sure you would like to delete the seed?")) {
-      axios.post(`http://localhost:8080/delete/${seedId}`).then(response => response.data)
+      axios.delete(`http://localhost:8080/inventory/delete/${seedId}`).then(response => response.data)
       .then((data) => {
         this.setState({inventory:data});
       })
@@ -59,8 +65,8 @@ export default class InventoryList extends Component{
     render(){
       return (
         <div className = "container">
-           <Link to = {"/inventory/add"}><Button variant="dark" class="item" id="addInventoryBtn"><FontAwesomeIcon icon = {faPlusSquare}/>ADD INVENTORY</Button></Link>
           <h2 className='"text-center'>Inventory</h2>
+          <Link to = {"/inventory/add"}><Button variant="dark" class="item" id="addInventoryBtn"><FontAwesomeIcon icon = {faPlusSquare}/>ADD INVENTORY</Button></Link>
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -74,14 +80,14 @@ export default class InventoryList extends Component{
               <td colSpan="6"> Inventory</td>
             </tr>:
             this.state.inventory.map((seed) => (
-              <tr key ={seed.id}>
+              <tr key ={seed.seedId}>
                 <td>{seed.seedName}</td>
                 <td>{seed.qty}</td>
 
                  <td>
                   <ButtonGroup>
-                  <button size = "sm" variant = "outline-primary" onClick={() => { this.updateQuantity(seed.id)}}><FontAwesomeIcon icon = {faEdit}/></button>
-                  <button size = "sm" variant = "outline-primary" style = {{marginLeft:"10px"}} onClick={() => { this.deleteSeed(seed.id)}}> <FontAwesomeIcon icon = {faTrash}/></button>
+                  <button size = "sm" variant = "outline-primary" onClick={() => { this.updateQuantity(seed.seedId)}}><FontAwesomeIcon icon = {faEdit}/></button>
+                  <button size = "sm" variant = "outline-primary" style = {{marginLeft:"10px"}} onClick={() => { this.deleteSeed(seed.seedId)}}> <FontAwesomeIcon icon = {faTrash}/></button>
                   </ButtonGroup>
                 </td>
               </tr>
