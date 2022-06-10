@@ -50,7 +50,7 @@ export default class InventoryList extends Component{
   deleteSeed(seedId) {
     let txt = ""
     if(window.confirm("Are you sure you would like to delete the seed?")) {
-      axios.post(`http://localhost:8080/delete/${seedId}`).then(response => response.data)
+      axios.delete(`http://localhost:8080/inventory/delete/${seedId}`).then(response => response.data)
       .then((data) => {
         this.setState({inventory:data});
       })
