@@ -2,40 +2,22 @@ import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css"
 import DayView from "./CalendarAssets/DayView.js";
-import data from './anotherDummy.json';
-import moreData from './dummyData.json'
 
 function NewCalendar() {
     const [date, setDate] = useState(new Date());
     const prevDate = new Date();
-    const [ tasks, setTasks ] = useState([]);
     let day = "";
-    const [todaysDate, setTodaysDate ] = useState('')
-    useEffect(() => {
-        setTodaysDate(date.toISOString().split('T', 1))
-    }, [])
-    
+    const [todaysDate, setTodaysDate ] = useState('');
+    const [clickedDay, setClickedDay] = useState(date.toISOString().split('T', 1).toString())
 
-    for (let index = 0; index < data.length; index++) {
-        
-        if (data[index].dueDate.includes(todaysDate)) {
-            tasks.push(data[index])
-            
-        }
-        
-    }
-    
+    useEffect(() => {
+        setTodaysDate(date.toISOString().split('T', 1).toString())
+    }, [])
     
     const handleChange = date => {
         setDate(date);
-        updateTasks();
-        
+        setClickedDay(date.toISOString().split('T', 1).toString())
     }
-
-    const updateTasks = () => {
-        setTasks(tasks)
-    }
-
 
     switch (date.getDay()) {
         case 0:
@@ -62,15 +44,12 @@ function NewCalendar() {
         default:
             break;
     }
-
-    
     
     return (
-        <div>
+        <div className="container">
             <h1 className="heading">Today's Date {prevDate.toDateString()}</h1>
-                <DayView className="dayView" day={day} date={date.toLocaleDateString()} taskList={tasks}/>
-                <Calendar className="calendar" onChange={handleChange} date={date} />
-                
+                <DayView className="dayView" day={day} date={date.toLocaleDateString()} clickedDay={clickedDay}/>
+                <Calendar className="calendar" onChange={handleChange}  />
         </div>
     );
 }

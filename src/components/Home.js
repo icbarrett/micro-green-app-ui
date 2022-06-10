@@ -1,35 +1,47 @@
 import React, {useState, useEffect} from 'react'
+import homepagepic from "../assets/homepagepicture.jpeg";
 
 const Home = () => {
-  
-  const [helloWorld, setHelloWorld] = useState();
+ 
+  const masthead={
+    backgroundImage:`url(${homepagepic})`,
+    height: "50vh",
+    marginTop:'-70px',
+    fontSize:'50px',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    opacity: 0.6
+    };
 
-
-  useEffect(() => {
-    // runs 1 time because it's in a `useEffect`
-    fetchHelloWorld();
-  }, []);
-
-  const fetchHelloWorld = () => {
-    fetch('http://localhost:8080/')
-      .then((response) => {
-        // If an object is returned from API you could do
-        // return response.json()
-        return response.text();
-      })
-      .then((text) => {
-        setHelloWorld(text);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+const titleBanner = {
+backgroundColor: "#c6f6c6",
+height: "50vh",
+marginTop:'-70px',
+fontSize:'50px',
+backgroundSize: 'cover',
+backgroundRepeat: 'no-repeat',
+};
 
   return (
-    <div>
-      This is the Home Page.
-      { helloWorld } 
+    <div style={{
+      width: "100%"
+    }}>
+      <div style={masthead}>
     </div>
+    <div style={{
+      backgroundColor: "white"
+      }}>
+      <h2 style= {{
+        textAlign: "center",
+        fontStyle: "italic"
+      }}>Ingi's Microgreens</h2>
+      <h4 style= {{
+        textAlign: "center",
+        fontStyle: "italic"
+      }}>Growers of non-GMO microgreens, shoots, and wheatgrass. Organic, sustainable, and nutritous produce born and raised in Frankemuth, Michigan.</h4>
+    </div>
+    </div>
+    
   )
 }
 
