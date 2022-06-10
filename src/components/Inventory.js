@@ -16,7 +16,7 @@ export default class Inventory extends Component{
   }
 
   initialState = {
-    seedName: '',  qty:0, seedingDensity: 0
+    seedName: '',  qty:0, seedPresoak:false, seedingDensity:0, blackoutTime:0, harvestTime:0
   }
 
   resetInventory = ()=>{
@@ -31,9 +31,9 @@ export default class Inventory extends Component{
       seedName: this.state.seedName,
       qty: this.state.qty,
       seedingDensity: this.state.seedingDensity,
-      // seedPresoak: this.state.seedPresoak,
-      // blackoutTime: this.state.blackoutTime,
-      // harvestTime: this.state.harvestTime
+      seedPresoak: this.state.seedPresoak,
+      blackoutTime: this.state.blackoutTime,
+      harvestTime: this.state.harvestTime
     };
 
     axios.post("http://localhost:8080/inventory/add", inventory)
@@ -53,8 +53,7 @@ export default class Inventory extends Component{
   }
   //add new seed form
   render(){
-    // const {seedName, qty, seedingDensity, seedPresoak, blackoutTime, harvestTime} = this.state;
-    const {seedName, qty, seedingDensity} = this.state;
+    const {seedName, qty, seedingDensity, seedPresoak, blackoutTime, harvestTime} = this.state;
 
     return (
       <Card className="border border-dark ">
@@ -85,12 +84,15 @@ export default class Inventory extends Component{
     value = {seedingDensity}
     onChange={this.inventoryChange}/>
   </Form.Group>
-  {/* <Form.Group as = {Col}>
+  <Form.Group as = {Col}>
     <Form.Label>Seed Presoak</Form.Label>
-    <Form.Control required autoComplete="off"
-     type = "number" name = "seedPresoak"
-    placeholder="Enter Seed Presoak"
-    value = {seedPresoak}
+    <Form.Check
+     type = "radio" label="true" name = "seedPresoak"
+    value = {true}
+    onChange={this.inventoryChange}/>
+    <Form.Check
+     type = "radio" label="false" name = "seedPresoak"
+    value = {false}
     onChange={this.inventoryChange}/>
   </Form.Group>
   <Form.Group as = {Col}>
@@ -108,7 +110,7 @@ export default class Inventory extends Component{
     placeholder="Enter Harvest Time"
     value = {harvestTime}
     onChange={this.inventoryChange}/>
-  </Form.Group> */}
+  </Form.Group>
   </Card.Body>
 <Card.Footer>
   <Button  variant = "success" type="submit">
