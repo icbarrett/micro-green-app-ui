@@ -60,7 +60,7 @@ function App (){
       <Route path = "/inventory/delete/{seedId}" element = {<Inventory/>}/>
       <Route path = "/inventory/update/{seedId}" element = {<Inventory/>}/>
       <Route path = "/orders" element = {<OrdersList/>}/>
-      <Route path = "/orders/add" element = {<Orders/>}/>
+      <Route path = "/orders/create" element = {<Orders/>}/>
       {/* <Route path = "/orders/update/orderId" element = {</>}/> */}
       <Route path = "/customers" element = {<CustomerList/>}/>
       <Route path = "/customers/add" element = {<CustomerAdd/>}/>
