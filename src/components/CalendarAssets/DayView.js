@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import React from 'react';
 import { Card } from 'react-bootstrap';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -18,7 +17,7 @@ function DayView({ day, date, clickedDay }) {
             setData(res.data)
         })
         .catch(err => console.error(err))
-      }, [])
+      }, [clickedDay])
       
       for (let index = 0; index < data.length; index++) {
         
