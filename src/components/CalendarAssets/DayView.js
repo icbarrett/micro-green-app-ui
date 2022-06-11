@@ -17,7 +17,7 @@ function DayView({ day, date, clickedDay }) {
             setData(res.data)
         })
         .catch(err => console.error(err))
-      }, [])
+      }, [clickedDay])
       
       for (let index = 0; index < data.length; index++) {
         
