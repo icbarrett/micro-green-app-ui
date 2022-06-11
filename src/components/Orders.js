@@ -2,6 +2,8 @@ import React, { Component} from "react";
 import {Card, Form, Button, Col} from 'react-bootstrap'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUndo, faSave } from "@fortawesome/free-solid-svg-icons";
+import ToastAlerts from "./ToastAlerts";
+
 
 import axios from "axios";
 
@@ -86,7 +88,7 @@ export default class Orders extends Component{
     const {customerName, seedName, trayType, qty, orderDate, deliveryDate} = this.state;
 
     return (
-      <Card className="border border-dark ">
+        <Card className="border border-dark ">
         <Card.Header>Add New Order</Card.Header>
         <Form onReset ={this.resetOrder} onSubmit={this.submitOrder} id = "orderFormId">
           <Card.Body>
@@ -151,6 +153,6 @@ export default class Orders extends Component{
   </Card.Footer>
   </Form>
   </Card>
-    ) 
+         ) 
 }
 }
