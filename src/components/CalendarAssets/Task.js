@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 
 
 const Task = ({ id, task, complete }) => {
@@ -16,11 +16,6 @@ const Task = ({ id, task, complete }) => {
             complete: !checked
         })
      };
-
-    useEffect(() => { 
-     
-    }, []);
-     
 
     return (
         <div>
