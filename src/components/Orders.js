@@ -66,7 +66,7 @@ export default class Orders extends Component{
         ]
     };
 
-    axios.post("http://localhost:8080/orders/create", order)
+    axios.post("http://localhost:8080/orders/add", order)
     .then(response => {
       if(response.data != null){
         this.setState(this.initialState);
