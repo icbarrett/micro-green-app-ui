@@ -17,11 +17,6 @@ const Task = ({ id, task, complete }) => {
         })
      };
 
-    useEffect(() => { 
-     
-    }, []);
-     
-
     return (
         <div>
                 <input type='checkbox' key={id} name={task}
