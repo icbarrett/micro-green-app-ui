@@ -89,11 +89,11 @@ deleteCustomer(customerId) {
             </tr>:
             this.state.customer.map((customer) => (
               <tr key ={customer.id}>
-                <td>{customer.customerId}</td>
-                <td>{customer.customerName}</td>
-                <td>{customer.activeCustomer.toString()}</td>
+                <td width = "10%">{customer.customerId}</td>
+                <td width = "50%">{customer.customerName}</td>
+                <td width = "10%">{customer.activeCustomer.toString()}</td>
 
-                <td>
+                <td width = "30%">
                   <ButtonGroup>
                       <button size = "sm" variant = "outline-primary" onClick={() => { this.updateCustomer(customer.customerId, customer)}}><FontAwesomeIcon icon = {faEdit}/></button>
 
