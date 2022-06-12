@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
-import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faInfo, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 export default class CustomerList extends Component{
 
@@ -57,12 +57,9 @@ export default class CustomerList extends Component{
 
                 <td>
                   <ButtonGroup>
-                    {/* <Link to = {`/customers/${customer.customerId}`}>  */}
                       <button size = "sm" variant = "outline-primary"><FontAwesomeIcon icon = {faEdit}/></button>
-                    {/* </Link> */}
-                    {/* <Link to = {`/customers/delete/${customer.customerId}`}>  */}
                       <button size = "sm" variant = "outline-primary" style = {{marginLeft:"10px"}}> <FontAwesomeIcon icon = {faTrash}/></button>
-                    {/* </Link> */}
+                      <button size = "sm" variant = "outline-primary" style = {{marginLeft:"10px"}}> <FontAwesomeIcon icon = {faInfo}/></button>
                   </ButtonGroup>
                 </td>
               </tr>

@@ -3,7 +3,7 @@ import {Table, Button, ButtonGroup} from 'react-bootstrap';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
-import { faEdit, faTrash, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faTrash, faPlusSquare, faInfo } from '@fortawesome/free-solid-svg-icons';
 
 export default class OrdersList extends Component{
 
@@ -83,6 +83,7 @@ deleteOrder = (orderId) => {
                   <ButtonGroup>
                     <Link to = {`update/${order.orderId}`} className ="btn btn-sm btn-outline-primary"><FontAwesomeIcon icon = {faEdit}/></Link>
                     <button size = "sm" variant = "outline-primary" onClick= {this.deleteOrder.bind(this, order.orderId)} style = {{marginLeft:"10px"}}> <FontAwesomeIcon icon = {faTrash}/></button>
+                    <button size = "sm" variant = "outline-primary" style = {{marginLeft:"10px"}}> <FontAwesomeIcon icon = {faInfo}/></button>
                   </ButtonGroup>
                 </td>
               </tr>

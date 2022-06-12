@@ -83,22 +83,22 @@ export default function EditOrder() {
       method: "PUT",
       url: `http://localhost:8080/orders/update/${orderId}`,
       data: {
-            orderDate,
-            deliveryDate,
-            customer:{
-              customerName,
-            orderDetails: [ 
-              {
-              qty,
-            seed: {
-              seedName
-            },
-            tray:{
-              trayType
-            }
-              }
-            ]
-      },
+    //         orderDate:,
+    //         deliveryDate,
+    //         customer:{
+    //           customerName,
+    //         orderDetails: [ 
+    //           {
+    //           qty,
+    //         seed: {
+    //           seedName
+    //         },
+    //         tray:{
+    //           trayType
+    //         }
+    //           }
+    //         ]
+    //   },
     }
     }).then((res) => {
         console.log(res.data);
