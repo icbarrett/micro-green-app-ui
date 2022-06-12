@@ -43,7 +43,7 @@ export default class InventoryList extends Component{
           qty: response.data
         });
       });  
-      
+      window.location.reload();
     }
   }
 
@@ -55,6 +55,7 @@ export default class InventoryList extends Component{
         this.setState({inventory:data});
       })
       txt = "You have deleted the seed";
+      window.location.reload();
     } else {
       txt = "You have not deleted the seed";
     }
