@@ -1,89 +1,190 @@
-import { Component } from "react";
-import {Card, Form, Button, Col} from 'react-bootstrap'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUndo, faSave } from "@fortawesome/free-solid-svg-icons";
+import React from 'react';
+// import { useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
-import axios from "axios";
-
-export default class Customer extends Component{
-
-    constructor(props){
-        super(props);
-        //state object stores property values that belong to the component
-        this.state = this.initialState;
-        this.customerChange = this.customerChange.bind(this);
-        this.submitCustomer = this.submitCustomer.bind(this);
+export default function EditOrder() {
+  const [order, setOrder] = React.useState({
+    orderDate: '',
+    deliveryDate: '',
+    orderDetails: [ 
+      {
+      qty: '',
+    seed: {
+      seedName: ''
+    },
+    tray:{
+      trayType:''
     }
-
-    initialState = {
-        orderDetails:[
-                {
-                    qty: ''
-                }
-        ]
-        
+      }
+    ],
+    customer:{
+      customerName:''
     }
+  });
 
-//     resetCustomer = ()=>{
-//         this.setState(()=>this.initialState);
-//     }
+  const {orderId} = useParams();
+//   const history = useHistory();
+    console.log(order);
 
-    submitOrder = event => {
-        event.preventDefault();
-
-        const order = {
-            orderDetails:[
-                {
-                    qty: this.state.qty
-                }
-            ]
-        
-        };
-
-        axios.put("http://localhost:8080/orders/{order.orderId}")
-        .then(response => {
-        if(response.data != null){
-            this.setState(this.initialState);
-            alert("Order updated successfully");
+  const onChange = e => {
+    let data = { ...order };
+    let name = e.target.name;
+    let val = e.target.value;
+    if (name == 'orderDate' || name == 'deliveryDate') {
+      data =
+       { ...data,
+         [name]: val };
+    } else if (name == 'qty'){
+      data = {
+        ...data,
+        orderDetails: {
+          ...data.orderDetails,
+          [name]: val
         }
-        });
-    }
+      };
+    } else if (name == 'seedName'){
+      data = {
+        ...data,
+        orderDetails: {
+          ...data.orderDetails,
+          seed: {
+            ...data.orderDetails.seed,
+            [name]: val
+          }
+        }
+      };
+    }else if (name == 'trayType'){
+        data = {
+          ...data,
+          orderDetails: {
+            ...data.orderDetails,
+            tray: {
+              ...data.orderDetails.tray,
+              [name]: val
+            }
+          }
+        };
+     } else if (name == 'customerName'){
+            data = {
+              ...data,
+              customer: {
+                ...data.customer,
+                [name]: val
+              }
+            };
+        }
+    setOrder(data);
+  };
 
-    orderChange = event => {
-        this.setState({
-        [event.target.name]:event.target.value
-        });
+  const submit = (e) => {
+    e.preventDefault();
+    axios({
+      method: "PUT",
+      url: `http://localhost:8080/orders/update/${orderId}`,
+      data: {
+            orderDate,
+            deliveryDate,
+            customer:{
+              customerName,
+            orderDetails: [ 
+              {
+              qty,
+            seed: {
+              seedName
+            },
+            tray:{
+              trayType
+            }
+              }
+            ]
+      },
     }
-  //edit new customer form
-    render(){
-        const {qty} = this.state;
-// 
-        return (
-            <Card className="border border-dark ">
-                {/* <Card.Header>Add New Customer</Card.Header> */}
-                {/* <Form onReset ={this.resetCustomer} onSubmit={this.submitCustomer} id = "customerFormId"> */}
-                    <Card.Body>
-                        <Form.Group as = {Col}>
-                            <Form.Label>Order Quantity</Form.Label>
-                                <Form.Control required autoComplete="off"
-                                type = "number" name ="qty"
-                                placeholder="Enter Order Quantity"
-                                value = {qty}
-                                onChange={this.orderChange}/>
-                        </Form.Group>  
-                    </Card.Body>
-                    <Card.Footer>
-                        <Button  variant = "success" type="submit">
-                            <FontAwesomeIcon icon = {faSave}/>
-                            Submit
-                        </Button>{' '}
-                        <Button  variant = "info" type="reset">
-                            <FontAwesomeIcon icon = {faUndo}/>
-                            Reset
-                        </Button>
-                    </Card.Footer>
-                {/* </Form> */}
-            </Card>
-        ) 
-    }
+    }).then((res) => {
+        console.log(res.data);
+    
+    // .then(response => {
+    //     console.log(response.data)
+    //     this.setState({
+    //         setOrder
+        //   });
+    //   history.push(`/success/` + id);
+      
+    });
+  };
+//   const submit = e => {
+//     e.preventDefault();
+//     console.log(JSON.stringify(order));
+//   };
+  return (
+    <div>
+      <form action="">
+        <div className="form-group">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Customername"
+            name="customerName"
+            value={order.customer.customerName}
+            onChange={onChange}
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="SeedName"
+            value={order.orderDetails.seed.seedName}
+            name="seedName"
+            onChange={onChange}
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="TrayType"
+            name="trayType"
+            value={order.orderDetails.tray.trayType}
+            onChange={onChange}
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="number"
+            className="form-control"
+            placeholder="OrderQuantity"
+            name="qty"
+            value={order.orderDetails.qty}
+            onChange={onChange}
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="date"
+            className="form-control"
+            placeholder="OrderDate"
+            value={order.orderDate}
+            name="orderDate"
+            onChange={onChange}
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="date"
+            className="form-control"
+            placeholder="Delivery Date"
+            value={order.deliveryDate}
+            name="deliveryDate"
+            onChange={onChange}
+          />
+        </div>
+        <div className="form-group">
+          <button className="btn btn-primary" onClick={submit}>
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  );
 }
