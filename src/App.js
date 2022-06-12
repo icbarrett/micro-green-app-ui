@@ -64,8 +64,8 @@ function App (){
       <Route path = "/inventory/update/{seedId}" element = {<Inventory/>}/>
       <Route path = "/orders" element = {<OrdersList/>}/>
       <Route path = "/orders/create" element = {<Orders/>}/>
-      <Route path = "/orders/update/:orderId" element = {<Orders/>}/> 
-      {/* <Route path = "/orders/update/:orderId" element = {<EditOrder/>}/> */}
+      {/* <Route path = "/orders/update/:orderId" element = {<Orders/>}/>  */}
+      <Route path = "/orders/update/:orderId" element = {<EditOrder/>}/>
       <Route path = "/customers" element = {<CustomerList/>}/>
       <Route path = "/customers/add" element = {<CustomerAdd/>}/>
       <Route path = "/customers/{customerId}" element = {<CustomerEdit/>}/>
