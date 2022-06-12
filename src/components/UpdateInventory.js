@@ -17,7 +17,7 @@ export default class UpdateInventory extends Component{
 
 
   initialState = {
-    qty:''
+    seedName: this.seedName, qty: this.qty, seedId:this.seedId
   }
 
   resetInventory = ()=>{
@@ -29,6 +29,8 @@ export default class UpdateInventory extends Component{
     event.preventDefault();
 
     const inventory = {
+      seedId: this.state.seedId,
+      seedName: this.state.seedName,
       qty: this.state.qty
     };
 
@@ -51,17 +53,25 @@ export default class UpdateInventory extends Component{
   }
   //edit qty seed form
   render(){
-    const {qty} = this.state;
+    const {seedName, qty} = this.state;
 
     return (
       <Card className="border border-dark ">
         <Card.Header>Edit Quantity</Card.Header>
         <Form onReset ={this.resetInventory} onSubmit={this.submitInventory} id = "editInventoryFormId">
-          <Card.Body>  
+          <Card.Body> 
+          <Form.Group as = {Col}>
+    <Form.Label>Seed Name</Form.Label>
+    <Form.Control required autoComplete="off"
+    type = "text" name ="seedName"
+    placeholder="Enter Seed Name"
+    value = {seedName}
+    onChange={this.inventoryChange}/>
+  </Form.Group>  
   <Form.Group as = {Col}>
     <Form.Label>Quantity</Form.Label>
     <Form.Control required autoComplete="off"
-     type = "text" name = "qty"
+     type = "number" name = "qty"
     placeholder="Enter Quantity"
     value = {qty}
     onChange={this.inventoryChange}/>
