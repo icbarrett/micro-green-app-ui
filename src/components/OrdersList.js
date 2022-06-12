@@ -2,6 +2,7 @@ import { Component } from 'react';
 import {Table, Button, ButtonGroup} from 'react-bootstrap';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 import { faEdit, faTrash, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 
 export default class OrdersList extends Component{
@@ -25,6 +26,20 @@ export default class OrdersList extends Component{
       this.setState({orders:data});
   });
 }
+
+deleteOrder = (orderId) => {
+  axios.delete(`http://localhost:8080/orders/delete/${orderId}`)
+  .then(response=>{
+    if(response.data != null){
+      alert("Order deleted successfully.");
+      this.setState({
+        orders: this.state.orders.filter(order=>order.orderId !== orderId)
+      })
+    }
+  });
+};
+
+
 
 
     render(){
@@ -50,7 +65,7 @@ export default class OrdersList extends Component{
               <td colSpan="6"> Orders</td>
             </tr>:
             this.state.orders.map((order) => (
-              <tr key ={order.id}>
+              <tr key ={order.orderId}>
                 <td>{order.orderId}</td>
                 <td>{order.customer.customerName}</td>
                 <td>{order.orderDate}</td>
@@ -66,8 +81,8 @@ export default class OrdersList extends Component{
 
                  <td>
                   <ButtonGroup>
-                  <button size = "sm" variant = "outline-primary"><FontAwesomeIcon icon = {faEdit}/></button>
-                  <button size = "sm" variant = "outline-primary" style = {{marginLeft:"10px"}}> <FontAwesomeIcon icon = {faTrash}/></button>
+                    <Link to = {`update/${order.orderId}`} className ="btn btn-sm btn-outline-primary"><FontAwesomeIcon icon = {faEdit}/></Link>
+                    <button size = "sm" variant = "outline-primary" onClick= {this.deleteOrder.bind(this, order.orderId)} style = {{marginLeft:"10px"}}> <FontAwesomeIcon icon = {faTrash}/></button>
                   </ButtonGroup>
                 </td>
               </tr>

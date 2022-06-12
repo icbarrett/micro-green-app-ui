@@ -10,6 +10,7 @@ export default class Orders extends Component{
 
   constructor(props){
     super(props);
+    console.log(props);
     //state object stores property values that belong to the component
     this.state = this.initialState;
     this.orderChange = this.orderChange.bind(this);
@@ -17,7 +18,7 @@ export default class Orders extends Component{
   }
 
   initialState = {
-    customerId:null,
+    orderId: '',
     orderDate: '',
     deliveryDate: '',
     orderDetails: [ 
@@ -34,12 +35,53 @@ export default class Orders extends Component{
     customer:{
       customerName:''
     }
+    };
+  
+    componentDidMount(){
+      if (this.props.match && this.props.match.params.orderId) {
+        const orderId = +this.props.match.params.order.orderId;
+        if(orderId){
+          this.findOrderById(orderId);
+          }
+      }    
+    }
+    
+    
+
+    findOrderById = (orderId) =>{
+      axios.get(`http://localhost:8080/orders/3`)
+      .then(response =>{
+        if (response.data!=null){
+          this.setState({
+
+            orderId: response.data.orderId,
+            orderDate: response.data.orderDate,
+            deliveryDate: response.data.deliveryDate,
+            customer:{
+              customerName:response.data.customerName
+            },
+            orderDetails: [ 
+              {
+              qty: response.data.qty,
+            seed: {
+              seedName: response.data.seedName
+            },
+            tray:{
+              trayType:response.data.trayType
+            }
+              }
+            ]
+          });
+        }
+      }).catch((error)=>{
+        console.log("Error:" +error);
+      });
     }
   
 
   resetOrder = ()=>{
     this.setState(()=>this.initialState);
-  }
+  };
 
   submitOrder = event => {
     // alert('Customer Name: '+this.state.customerName+', Order Date: '+this.state.orderDate+', Delivery Date: '+this.state.deliveryDate+', Active Order: '+this.state.activeOrder+'');
@@ -75,10 +117,52 @@ export default class Orders extends Component{
     });
   }
 
-  orderChange = event => {
-    this.setState({
-      [event.target.name]:event.target.value
-    });
+  orderChange = e => {
+    let data = { ...this.state};
+    let name = e.target.name;
+    let val = e.target.value;
+    if (name == 'orderDate' || name == 'deliveryDate') {
+      data = { ...data, [name]: val };
+    } else if (name == 'customerName'){
+      data = {
+        ...data,
+        customer: {
+          ...data.customer,
+          [name]: val
+        }
+      };
+    } else if (name == 'qty'){
+      data = {
+        ...data,
+        orderDetails: {
+            ...data.orderDetails,
+            [name]: val
+          }
+        };
+      } else if (name == 'seedName'){
+      data = {
+        ...data,
+        orderDetails: {
+          ...data.orderDetails,
+          seed: {
+            ...data.orderDetails.seed,
+            [name]: val
+          }
+        }
+      };
+    }else if (name == 'trayType'){
+      data = {
+        ...data,
+        orderDetails: {
+          ...data.orderDetails,
+          tray: {
+            ...data.orderDetails.trayType,
+            [name]: val
+          }
+        }
+      };
+    this.setState(data);
+  };
   }
 
   //add new order form
@@ -87,7 +171,7 @@ export default class Orders extends Component{
 
     return (
       <Card className="border border-dark ">
-        <Card.Header>Add New Order</Card.Header>
+        <Card.Header>{this.state.orderId ? "Update Order" : "Add New Order"}</Card.Header>
         <Form onReset ={this.resetOrder} onSubmit={this.submitOrder} id = "orderFormId">
           <Card.Body>
     <Form.Group as = {Col}>
@@ -142,7 +226,7 @@ export default class Orders extends Component{
 <Card.Footer>
   <Button  variant = "success" type="submit">
     <FontAwesomeIcon icon = {faSave}/>
-    Submit
+   Save
   </Button>{' '}
   <Button  variant = "info" type="reset">
     <FontAwesomeIcon icon = {faUndo}/>
@@ -154,3 +238,4 @@ export default class Orders extends Component{
     ) 
 }
 }
+
