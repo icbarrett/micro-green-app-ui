@@ -21,7 +21,7 @@ export default class Orders extends Component{
   initialState = {
     
       orderDate: new Date().toISOString().split('T', 1).toString(),
-      deliveryDate: "2022-06-20",
+      deliveryDate: "",
       activeOrder: false,
       customer: {customerId: 1,
                   customerName: "Ingrid"},
