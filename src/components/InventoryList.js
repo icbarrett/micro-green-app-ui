@@ -63,6 +63,11 @@ export default class InventoryList extends Component{
   }
 
 
+  seedDetails(seedingDensity, seedPresoak, blackoutTime, harvestTime) {
+    let txt = `Seeding Density: ${seedingDensity}\n` + `Seeding Presoak: ${seedPresoak}\n` + `Blackout Time: ${blackoutTime}\n` + `Harvest Time: ${harvestTime}`;
+    alert(txt);
+  }
+
     render(){
       return (
         <div className = "container">
@@ -88,7 +93,8 @@ export default class InventoryList extends Component{
                  <td>
                   <ButtonGroup>
                   <button size = "sm" variant = "outline-primary" onClick={() => { this.updateQuantity(seed.seedId)}}><FontAwesomeIcon icon = {faEdit}/></button>
-                  <button size = "sm" variant = "outline-primary" style = {{marginLeft:"10px"}} onClick={() => { this.deleteSeed(seed.seedId)}}> <FontAwesomeIcon icon = {faTrash}/></button>
+                  <button size = "sm" variant = "outline-primary" onClick={() => { this.seedDetails(seed.seedingDensity, seed.seedPresoak, seed.blackoutTime, seed.harvestTime)}}>Seed Details</button>
+                  {/* <button size = "sm" variant = "outline-primary" style = {{marginLeft:"10px"}} onClick={() => { this.deleteSeed(seed.seedId)}}> <FontAwesomeIcon icon = {faTrash}/></button> */}
                   </ButtonGroup>
                 </td>
               </tr>
