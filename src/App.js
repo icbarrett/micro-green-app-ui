@@ -26,22 +26,18 @@ import Carousel from 'react-bootstrap/Carousel'
 
 
 function App (){
-  const slideStyle = {
-    height: "100hv",
-    width: "100%"
-  }
+
   return (
     <div>
     <Router>
     <NavigationBar />
-
+{/* 
     <Carousel >
   <Carousel.Item >
     <img
       className="d-block w-100"
       src={homepagepic}
       alt="First slide"
-      style={slideStyle}
     />
     <Carousel.Caption>
       <h3>Ingi's Microgreens</h3>
@@ -72,7 +68,7 @@ function App (){
       <p>One of the most popular radish falvors. Amazing for a salad</p>
     </Carousel.Caption>
   </Carousel.Item>
-</Carousel>
+</Carousel> */}
     
     <div className='container'>
     <Routes>
