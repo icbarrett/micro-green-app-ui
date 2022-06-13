@@ -1,11 +1,12 @@
-import React, { Component, useState } from "react";
+import React, { Component} from "react";
 import {Card, Form, Button, Col} from 'react-bootstrap'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUndo, faSave, faAdd } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { faUndo, faSave } from "@fortawesome/free-solid-svg-icons";
+import ToastAlerts from "./ToastAlerts";
+
 
 import axios from "axios";
-import {useForm } from "react-hook-form";
+
 
 export default class Orders extends Component{
 
@@ -28,7 +29,7 @@ export default class Orders extends Component{
       seedName: ""
     },
     tray:{
-      qty:""
+      trayType:""
     }
       }
     ],
@@ -55,15 +56,19 @@ export default class Orders extends Component{
       orderDetails:[
         {
           qty: this.state.qty,
-          // seed:
-          // {
-          //   seedName: this.state.seedName
-          // },
+          seed:
+          {
+            seedName: this.state.seedName
+          },
+          tray:
+          {
+            trayType:this.state.trayType
+          }
         }      
         ]
     };
 
-    axios.post("http://localhost:8080/orders/create", order)
+    axios.post("http://localhost:8080/orders/add", order)
     .then(response => {
       if(response.data != null){
         this.setState(this.initialState);
@@ -77,12 +82,13 @@ export default class Orders extends Component{
       [event.target.name]:event.target.value
     });
   }
+
   //add new order form
   render(){
-    const {customerName, seedName, qty, orderDate, deliveryDate} = this.state;
+    const {customerName, seedName, trayType, qty, orderDate, deliveryDate} = this.state;
 
     return (
-      <Card className="border border-dark ">
+        <Card className="border border-dark ">
         <Card.Header>Add New Order</Card.Header>
         <Form onReset ={this.resetOrder} onSubmit={this.submitOrder} id = "orderFormId">
           <Card.Body>
@@ -94,14 +100,22 @@ export default class Orders extends Component{
     value = {customerName}
     onChange={this.orderChange}/>
   </Form.Group>  
-  {/* <Form.Group as = {Col}>
+  <Form.Group as = {Col}>
     <Form.Label>Seed Name</Form.Label>
     <Form.Control required autoComplete="off"
      type = "text" name = "seedName"
     placeholder="Enter Seed Name"
     value = {seedName}
     onChange={this.orderChange}/>
-  </Form.Group> */}
+  </Form.Group>
+  <Form.Group as = {Col}>
+    <Form.Label>Tray Type</Form.Label>
+    <Form.Control required autoComplete="off"
+     type = "text" name = "trayType"
+    placeholder="Enter Tray Type"
+    value = {trayType}
+    onChange={this.orderChange}/>
+  </Form.Group>
   <Form.Group as = {Col}>
     <Form.Label>Order Quantity</Form.Label>
     <Form.Control required autoComplete="off"
@@ -139,6 +153,6 @@ export default class Orders extends Component{
   </Card.Footer>
   </Form>
   </Card>
-    ) 
+         ) 
 }
 }
