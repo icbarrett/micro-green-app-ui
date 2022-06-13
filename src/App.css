@@ -67,6 +67,7 @@
   margin-top: 30px;
   float: right;
   cursor: pointer;
+  margin-bottom: 1%;
 }
 
 #addCustomerBtn {
@@ -74,6 +75,7 @@
   margin-top: 30px;
   float: right;
   cursor: pointer;
+  margin-bottom: 1%;
 }
 
 
@@ -90,6 +92,7 @@
   margin-top: 70px;
   float: right;
   cursor: pointer;
+  margin-bottom: 1%;
 }
 
 .orders {
@@ -116,4 +119,9 @@ body {
 .formcard {
   margin-left: 5%;
   margin-right: 5%;
+  margin-top: 2%;
+}
+
+.text-center {
+  margin-top: 2%
 }
