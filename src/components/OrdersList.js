@@ -49,7 +49,7 @@ deleteOrder = (orderId) => {
     render(){
       return (
         <div className = "container">
-          <Button variant="dark" class="item" id="addOrdersBtn" onClick={()=>window.open("/orders/create", '_blank')}><FontAwesomeIcon icon = {faPlusSquare}/>ADD ORDERS</Button>
+          <Button variant="dark" class="item" id="addOrdersBtn" onClick={()=>window.open("/orders/add", '_blank')}><FontAwesomeIcon icon = {faPlusSquare}/>ADD ORDERS</Button>
           <h2 className='text-center'>Orders</h2>
         <Table striped bordered hover>
           <thead>
