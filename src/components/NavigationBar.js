@@ -11,6 +11,8 @@ import logo from '../assets/ingismicrogreenstransparentV1.png';
 import { LinkContainer } from 'react-router-bootstrap';
 
 function NavigationBar () {
+
+
 return (
       <div className='App'>
         {/* navigation html with bootstrap  */}

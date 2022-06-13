@@ -26,13 +26,51 @@ export default class CustomerList extends Component{
         .then((data) => {
             this.setState({customer:data});
             console.log(data)
-        });
+       });
 }
+
+
+updateCustomer(customerId, customer) {
+
+  let oldCustomerName = customer.customerName;
+  let newName = window.prompt("Please input customer change", oldCustomerName);
+    axios.put(`http://localhost:8080/customers/update/${customerId}`, {customerName: newName}).then(response => response.data)
+    .then(response =>  {
+      console.log(response.data)
+        this.setState({
+        customerName: response.data
+      });
+    });  
+    window.location.reload();
+  }
+
+
+
+deleteCustomer(customerId) {
+  let txt = ""
+  if(window.confirm("Are you sure you would like to delete this?")) {
+    // axios.delete(`http://localhost:8080/customer/delete/${customerId}`).then(response => response.data)
+    // .then((data) => {
+    //   this.setState({customer:data});
+    // })
+    axios.put(`http://localhost:8080/customers/delete/${customerId}`)
+    txt = "You have deleted this customer";
+    window.location.reload();
+  } else {
+    txt = "You have not deleted customer";
+    window.location.reload();
+
+  }
+ 
+  alert(txt);
+  
+}
+
 
     render(){
         return (
         <div className = "container">
-          <h2 className='"text-center'>List Customers</h2>
+          <h2 className='"text-center'>Customers</h2>
             <Link to = {"/customers/add"}><Button variant="dark" class="item" id="addCustomerBtn"><FontAwesomeIcon icon = {faPlusSquare}/>ADD CUSTOMER</Button></Link>
             
         <Table striped bordered hover>
@@ -47,19 +85,19 @@ export default class CustomerList extends Component{
           <tbody>
             {this.state.customer.length === 0 ? 
             <tr align = "center">
-              <td colSpan="4"> Customers</td>
+              <td colSpan="6"> Customers</td>
             </tr>:
             this.state.customer.map((customer) => (
               <tr key ={customer.id}>
                 <td>{customer.customerId}</td>
                 <td>{customer.customerName}</td>
-                <td>{customer.activeCustomer}</td>
+                <td>{customer.activeCustomer.toString()}</td>
 
                 <td>
                   <ButtonGroup>
-                      <button size = "sm" variant = "outline-primary"><FontAwesomeIcon icon = {faEdit}/></button>
-                      <button size = "sm" variant = "outline-primary" style = {{marginLeft:"10px"}}> <FontAwesomeIcon icon = {faTrash}/></button>
-                      <button size = "sm" variant = "outline-primary" style = {{marginLeft:"10px"}}> <FontAwesomeIcon icon = {faInfo}/></button>
+                      <button size = "sm" variant = "outline-primary" onClick={() => { this.updateCustomer(customer.customerId, customer)}}><FontAwesomeIcon icon = {faEdit}/></button>
+
+                      <button size = "sm" variant = "outline-primary" style = {{marginLeft:"10px"}} onClick={() => { this.deleteCustomer(customer.customerId)}}> <FontAwesomeIcon icon = {faTrash}/></button>
                   </ButtonGroup>
                 </td>
               </tr>

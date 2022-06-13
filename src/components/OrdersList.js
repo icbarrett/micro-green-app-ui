@@ -28,6 +28,19 @@ export default class OrdersList extends Component{
   });
 }
 
+deleteOrder = (orderId) => {
+  axios.delete(`http://localhost:8080/orders/delete/${orderId}`)
+  .then(response=>{
+    if(response.data != null){
+      alert("Order deleted successfully.");
+      this.setState({
+        orders: this.state.orders.filter(order=>order.orderId !== orderId)
+      })
+    }
+  });
+  // alert(orderId);
+};
+
 
 deleteOrder = (orderId) => {
   axios.delete(`http://localhost:8080/orders/delete/${orderId}`)

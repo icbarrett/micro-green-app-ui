@@ -33,7 +33,7 @@ class Orders extends Component{
       seedName: ""
     },
     tray:{
-      trayType:""
+      size:""
     }
       }
     ],
@@ -64,7 +64,7 @@ class Orders extends Component{
             deliveryDate: response.data.deliveryDate,
             qty: response.data.orderDetails[0].qty,
             seedName: response.data.orderDetails[0].seed.seedName,
-            trayType:response.data.orderDetails[0].tray.trayType
+            size:response.data.orderDetails[0].tray.size
           });
         }
       }).catch((error)=>{
@@ -221,7 +221,7 @@ class Orders extends Component{
   </Card.Footer>
   </Form>
   </Card>
-    ) 
+         ) 
 }
 }
 
