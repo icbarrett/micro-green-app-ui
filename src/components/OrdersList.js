@@ -26,6 +26,19 @@ export default class OrdersList extends Component{
   });
 }
 
+deleteOrder = (orderId) => {
+  axios.delete(`http://localhost:8080/orders/delete/${orderId}`)
+  .then(response=>{
+    if(response.data != null){
+      alert("Order deleted successfully.");
+      this.setState({
+        orders: this.state.orders.filter(order=>order.orderId !== orderId)
+      })
+    }
+  });
+  // alert(orderId);
+};
+
 
     render(){
       return (
@@ -50,7 +63,7 @@ export default class OrdersList extends Component{
               <td colSpan="6"> Orders</td>
             </tr>:
             this.state.orders.map((order) => (
-              <tr key ={order.id}>
+              <tr key ={order.orderId}>
                 <td>{order.orderId}</td>
                 <td>{order.customer.customerName}</td>
                 <td>{order.orderDate}</td>
@@ -67,7 +80,7 @@ export default class OrdersList extends Component{
                  <td>
                   <ButtonGroup>
                   <button size = "sm" variant = "outline-primary"><FontAwesomeIcon icon = {faEdit}/></button>
-                  <button size = "sm" variant = "outline-primary" style = {{marginLeft:"10px"}}> <FontAwesomeIcon icon = {faTrash}/></button>
+                  <button size = "sm" variant = "outline-primary" onClick= {this.deleteOrder.bind(this, order.orderId)} style = {{marginLeft:"10px"}}> <FontAwesomeIcon icon = {faTrash}/></button>
                   </ButtonGroup>
                 </td>
               </tr>
