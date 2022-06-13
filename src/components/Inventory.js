@@ -77,7 +77,7 @@ export default class Inventory extends Component{
     onChange={this.inventoryChange}/>
   </Form.Group>
   <Form.Group as = {Col}>
-    <Form.Label>Seeding Density</Form.Label>
+    <Form.Label>Seeding Density (Number per Tray)</Form.Label>
     <Form.Control required autoComplete="off"
      type = "number" name = "seedingDensity"
     placeholder="Enter Seeding Density"
@@ -96,7 +96,7 @@ export default class Inventory extends Component{
     onChange={this.inventoryChange}/>
   </Form.Group>
   <Form.Group as = {Col}>
-    <Form.Label>Blackout Time</Form.Label>
+    <Form.Label>Blackout Time (Days)</Form.Label>
     <Form.Control required autoComplete="off"
      type = "number" name = "blackoutTime"
     placeholder="Enter Blackout Time"
@@ -104,7 +104,7 @@ export default class Inventory extends Component{
     onChange={this.inventoryChange}/>
   </Form.Group>
   <Form.Group as = {Col}>
-    <Form.Label>Harvest Time</Form.Label>
+    <Form.Label>Harvest Time (Days)</Form.Label>
     <Form.Control required autoComplete="off"
      type = "number" name = "harvestTime"
     placeholder="Enter Harvest Time"
