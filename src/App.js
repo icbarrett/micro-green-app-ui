@@ -73,7 +73,7 @@ function App (){
     
     <div>
     <Routes>
-      <Route exact path = "/" element = {<NewCalendar/>}/>
+      <Route exact path = "/" element = {<Home/>}/>
       <Route path = "/inventory" element = {<InventoryList/>}/>
       <Route path = "/inventory/add" element = {<Inventory/>}/>
       <Route path = "/inventory/delete/{seedId}" element = {<Inventory/>}/>
