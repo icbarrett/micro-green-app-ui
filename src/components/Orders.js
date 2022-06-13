@@ -88,7 +88,7 @@ export default class Orders extends Component{
     const {customerName, seedName, trayType, qty, orderDate, deliveryDate} = this.state;
 
     return (
-        <Card className="border border-dark ">
+        <Card className="border border-dark formcard">
         <Card.Header>Add New Order</Card.Header>
         <Form onReset ={this.resetOrder} onSubmit={this.submitOrder} id = "orderFormId">
           <Card.Body>
