@@ -72,12 +72,13 @@ export default class InventoryList extends Component{
       return (
         <div className = "container">
           <h2 className='text-center'>Inventory</h2>
-          <Link to = {"/inventory/add"}><Button variant="dark" class="item" id="addInventoryBtn"><FontAwesomeIcon icon = {faPlusSquare}/>ADD INVENTORY</Button></Link>
+          <Link to = {"/inventory/add"}><Button variant="dark" class="item" id="addInventoryBtn"><FontAwesomeIcon icon = {faPlusSquare}/>ADD NEW SEED</Button></Link>
         <Table striped bordered hover>
           <thead>
             <tr>
               <th>Seed Name</th>
               <th>Quantity</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
