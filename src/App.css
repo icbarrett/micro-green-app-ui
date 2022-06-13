@@ -62,10 +62,20 @@
   width:calc(25% - 24px);
 }
 
-#addSeedsBtn {
+#addInventoryBtn {
   height: 50px;
   margin-top: 30px;
+  float: right;
+  cursor: pointer;
 }
+
+#addCustomerBtn {
+  height: 50px;
+  margin-top: 30px;
+  float: right;
+  cursor: pointer;
+}
+
 
 .titleOfPage {
   text-align: center;
@@ -78,7 +88,7 @@
 #addOrdersBtn {
   height: 50px;
   margin-top: 70px;
- float: right;
+  float: right;
   cursor: pointer;
 }
 
@@ -87,5 +97,3 @@
   flex-direction: row; /* change this to row instead of 'column' */
   flex-wrap:wrap; /* added flex-wrap */
 }
-
-

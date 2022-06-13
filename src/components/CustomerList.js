@@ -70,7 +70,7 @@ deleteCustomer(customerId) {
     render(){
         return (
         <div className = "container">
-          <h2 className='"text-center'>Customers</h2>
+          <h2 className='text-center'>Customers</h2>
             <Link to = {"/customers/add"}><Button variant="dark" class="item" id="addCustomerBtn"><FontAwesomeIcon icon = {faPlusSquare}/>ADD CUSTOMER</Button></Link>
             
         <Table striped bordered hover>
