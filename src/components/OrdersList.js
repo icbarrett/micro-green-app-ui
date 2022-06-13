@@ -28,19 +28,6 @@ export default class OrdersList extends Component{
   });
 }
 
-deleteOrder = (orderId) => {
-  axios.delete(`http://localhost:8080/orders/delete/${orderId}`)
-  .then(response=>{
-    if(response.data != null){
-      alert("Order deleted successfully.");
-      this.setState({
-        orders: this.state.orders.filter(order=>order.orderId !== orderId)
-      })
-    }
-  });
-  // alert(orderId);
-};
-
 
 deleteOrder = (orderId) => {
   axios.delete(`http://localhost:8080/orders/delete/${orderId}`)
@@ -53,6 +40,11 @@ deleteOrder = (orderId) => {
     }
   });
 };
+
+// seedDetails(seedingDensity, seedPresoak, blackoutTime, harvestTime) {
+//   let txt = `Seeding Density: ${seedingDensity}\n` + `Seeding Presoak: ${seedPresoak}\n` + `Blackout Time: ${blackoutTime}\n` + `Harvest Time: ${harvestTime}`;
+//   alert(txt);
+// }
 
     render(){
       return (
@@ -95,7 +87,8 @@ deleteOrder = (orderId) => {
                   <ButtonGroup>
                     <Link to = {`update/${order.orderId}`} className ="btn btn-sm btn-outline-primary"><FontAwesomeIcon icon = {faEdit}/></Link>
                     <button size = "sm" variant = "outline-primary" onClick= {this.deleteOrder.bind(this, order.orderId)} style = {{marginLeft:"10px"}}> <FontAwesomeIcon icon = {faTrash}/></button>
-                    <Link to = {`${order.orderId}`} className ="btn btn-sm btn-outline-primary" style = {{marginLeft:"10px"}}><FontAwesomeIcon icon = {faInfo}/></Link>
+                    {/* <Link to = {`${order.orderId}`} className ="btn btn-sm btn-outline-primary" style = {{marginLeft:"10px"}}><FontAwesomeIcon icon = {faInfo}/></Link> */}
+                    {/* <button size = "sm" variant = "outline-primary" onClick={() => { this.seedDetails(seed.seedingDensity, seed.seedPresoak, seed.blackoutTime, seed.harvestTime)}}><FontAwesomeIcon icon = {faInfo}/></button> */}
                   </ButtonGroup>
                 </td>
               </tr>
