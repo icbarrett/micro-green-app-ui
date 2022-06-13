@@ -23,10 +23,9 @@ return (
               <img 
                 alt="Logo"
                 src={logo}
-                width="30"
-                height="30"
+                width="100"
+                height="100"
                 className="d-inline-block align-top"/>{' '}
-              Ingi's Microgreens
             </Navbar.Brand>
             </LinkContainer>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />

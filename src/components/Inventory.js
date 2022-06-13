@@ -56,7 +56,7 @@ export default class Inventory extends Component{
     const {seedName, qty, seedingDensity, seedPresoak, blackoutTime, harvestTime} = this.state;
 
     return (
-      <Card className="border border-dark ">
+      <Card className="border border-dark formcard">
         <Card.Header>Add New Inventory</Card.Header>
         <Form onReset ={this.resetInventory} onSubmit={this.submitInventory} id = "inventoryFormId">
           <Card.Body>

@@ -53,7 +53,7 @@ export default class Customer extends Component{
         const {customerName} = this.state;
 
         return (
-            <Card className="border border-dark ">
+            <Card className="border border-dark formcard">
                 <Card.Header>Add New Customer</Card.Header>
                 <Form onReset ={this.resetCustomer} onSubmit={this.submitCustomer} id = "customerFormId">
                     <Card.Body>

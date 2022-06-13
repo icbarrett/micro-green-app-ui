@@ -132,6 +132,7 @@
 .heading {
     text-align: center;
     margin: auto;
+    padding-top: 2%;
 }
 .task-card {
   justify-content: center;
