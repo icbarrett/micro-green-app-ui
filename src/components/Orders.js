@@ -156,7 +156,7 @@ class Orders extends Component{
     const {customerName, seedName, size, qty, orderDate, deliveryDate} = this.state;
 
     return (
-      <Card className="border border-dark ">
+      <Card className="border border-dark formcard">
         <Card.Header>{this.state.orderId ? "Update Order" : "Add New Order"}</Card.Header>
         <Form onReset ={this.resetOrder} onSubmit={this.state.orderId ? this.updateOrder :this.submitOrder} id = "orderFormId">
           <Card.Body>
