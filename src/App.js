@@ -17,10 +17,7 @@ import OrdersList from "./components/OrdersList"
 import CustomerList from "./components/CustomerList.js";
 import CustomerAdd from "./components/CustomerAdd.js";
 import CustomerEdit from "./components/CustomerEdit.js";
-import EditOrder from "./components/EditOrder.js";
-import CustomerDropdown from "./components/CustomerDropdown.js"
-// import EditOrder1 from "./components/EditOrder1.js";
-
+import OrderDetails from './components/OrderDetails.js';
 
 
 //import banner
@@ -64,9 +61,8 @@ function App (){
       <Route path = "/inventory/delete/{seedId}" element = {<Inventory/>}/>
       <Route path = "/inventory/update/{seedId}" element = {<Inventory/>}/>
       <Route path = "/orders" element = {<OrdersList/>}/>
-      {/* <Route path = "/orders/create" element = {<CustomerDropdown/>}/> */}
-      {/* <Route path = "/orders/update/:orderId" element = {<Orders/>}/>  */}
-      <Route path = "/orders/update/:orderId" element = {<EditOrder/>}/>
+      <Route path = "/orders/:orderId" element = {<OrderDetails/>}/>
+      <Route path = "/orders/update/:orderId" element = {<Orders/>}/>
       <Route path = "/customers" element = {<CustomerList/>}/>
       <Route path = "/customers/add" element = {<CustomerAdd/>}/>
       <Route path = "/customers/{customerId}" element = {<CustomerEdit/>}/>

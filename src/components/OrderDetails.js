@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import { faEdit, faTrash, faPlusSquare, faInfo } from '@fortawesome/free-solid-svg-icons';
 
-export default class OrdersList extends Component{
+export default class OrderDetails extends Component{
 
   constructor(props){
     super(props);
@@ -15,39 +15,22 @@ export default class OrdersList extends Component{
   }
 
   componentDidMount(){
-    this.getAllOrders();
+    this.getOrderDetailsById();
     };
   
-
-  getAllOrders(){
-    axios.get("http://localhost:8080/orders")
-    .then(response => response.data)
-    .then((data) => {
-      this.setState({orders:data});
-  });
+getOrderDetailsById = (orderId) => {
+axios.get(`http://localhost:8080/orders/${orderId}`)
+.then(response => response.data)
+.then((data) => {
+  this.setState({order:data});
+  console.log(data);
+});
 }
 
-
-deleteOrder = (orderId) => {
-  axios.delete(`http://localhost:8080/orders/delete/${orderId}`)
-  .then(response=>{
-    if(response.data != null){
-      alert("Order deleted successfully.");
-      this.setState({
-        orders: this.state.orders.filter(order=>order.orderId !== orderId)
-      })
-    }
-  });
-};
-
-
-
-
-    render(){
+ render(){
       return (
         <div className = "container">
-          <Button variant="dark" class="item" id="addOrdersBtn" onClick={()=>window.open("/orders/create", '_blank')}><FontAwesomeIcon icon = {faPlusSquare}/>ADD ORDERS</Button>
-          <h2 className='"text-center'>List Orders</h2>
+          <h2 className='"text-center'>Order Details</h2>
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -55,9 +38,9 @@ deleteOrder = (orderId) => {
               <th>Customer Name</th>
               <th>Order Date</th>
               <th>Delivery Date</th>
+              <th>Active Status</th>
               <th>Order Quantity</th>
               <th>Seed Name</th>
-              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -71,6 +54,7 @@ deleteOrder = (orderId) => {
                 <td>{order.customer.customerName}</td>
                 <td>{order.orderDate}</td>
                 <td>{order.deliveryDate}</td>
+                <td>{order.activeStatus.toString()}</td>
                 {order.orderDetails.map((orderDetail) =>(
                   <>
                   <td>{orderDetail.qty}</td>
@@ -81,11 +65,11 @@ deleteOrder = (orderId) => {
                 )}
 
                  <td>
-                  <ButtonGroup>
+                  {/* <ButtonGroup>
                     <Link to = {`update/${order.orderId}`} className ="btn btn-sm btn-outline-primary"><FontAwesomeIcon icon = {faEdit}/></Link>
                     <button size = "sm" variant = "outline-primary" onClick= {this.deleteOrder.bind(this, order.orderId)} style = {{marginLeft:"10px"}}> <FontAwesomeIcon icon = {faTrash}/></button>
-                    <Link to = {`${order.orderId}`} className ="btn btn-sm btn-outline-primary" style = {{marginLeft:"10px"}}><FontAwesomeIcon icon = {faInfo}/></Link>
-                  </ButtonGroup>
+                    <Link to = {`/${order.orderId}`} className ="btn btn-sm btn-outline-primary" style = {{marginLeft:"10px"}}><FontAwesomeIcon icon = {faInfo}/></Link>
+                  </ButtonGroup> */}
                 </td>
               </tr>
             ))
