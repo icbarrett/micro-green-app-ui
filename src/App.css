@@ -97,3 +97,18 @@
   flex-direction: row; /* change this to row instead of 'column' */
   flex-wrap:wrap; /* added flex-wrap */
 }
+
+.w-100 {
+  width: 100%;
+}
+
+body {
+  width: 100%
+}
+
+.slideshow {
+  width: 100%;
+  padding-left: 0%;
+  padding-right: 0%;
+}
+

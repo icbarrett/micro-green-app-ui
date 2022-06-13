@@ -10,13 +10,12 @@ const Home = () => {
 
   return (
     <div>
-      <Carousel>
+      <Carousel class="slideshow">
         <Carousel.Item>
           <img
             className="d-block w-100"
             src={homepagepic}
             alt="First slide"
-            styles={{ maxWidth: 10000, minHeight: 300 }}
           />
           <Carousel.Caption>
             <h3>Ingi's Microgreens</h3>
