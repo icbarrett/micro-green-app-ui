@@ -62,10 +62,20 @@
   width:calc(25% - 24px);
 }
 
-#addSeedsBtn {
+#addInventoryBtn {
   height: 50px;
   margin-top: 30px;
+  float: right;
+  cursor: pointer;
 }
+
+#addCustomerBtn {
+  height: 50px;
+  margin-top: 30px;
+  float: right;
+  cursor: pointer;
+}
+
 
 .titleOfPage {
   text-align: center;
@@ -78,7 +88,7 @@
 #addOrdersBtn {
   height: 50px;
   margin-top: 70px;
- float: right;
+  float: right;
   cursor: pointer;
 }
 
@@ -88,4 +98,18 @@
   flex-wrap:wrap; /* added flex-wrap */
 }
 
+.w-100 {
+  width: 100%;
+}
+
+body {
+  width: 100%
+}
+
+.slideshow {
+  width: 100%;
+  padding-left: 0%;
+  padding-right: 0%;
+  height: 10%;
+}
 

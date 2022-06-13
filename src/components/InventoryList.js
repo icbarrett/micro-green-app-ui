@@ -71,7 +71,7 @@ export default class InventoryList extends Component{
     render(){
       return (
         <div className = "container">
-          <h2 className='"text-center'>Inventory</h2>
+          <h2 className='text-center'>Inventory</h2>
           <Link to = {"/inventory/add"}><Button variant="dark" class="item" id="addInventoryBtn"><FontAwesomeIcon icon = {faPlusSquare}/>ADD INVENTORY</Button></Link>
         <Table striped bordered hover>
           <thead>

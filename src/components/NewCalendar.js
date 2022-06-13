@@ -47,7 +47,7 @@ function NewCalendar() {
     
     return (
         <div className="container">
-            <h1 className="heading">Today's Date {prevDate.toDateString()}</h1>
+            <h4 className="heading">{prevDate.toDateString()}</h4>
                 <DayView className="dayView" day={day} date={date.toLocaleDateString()} clickedDay={clickedDay}/>
                 <Calendar className="calendar" onChange={handleChange}  />
         </div>

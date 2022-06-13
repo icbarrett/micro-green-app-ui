@@ -125,6 +125,9 @@
    width: fit-content;
    float: left;
    margin-top: 5%;
+   padding-top: 30px;
+   padding-left: 10px;
+   padding-right: 10px;
 }
 .heading {
     text-align: center;

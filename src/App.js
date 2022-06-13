@@ -71,7 +71,7 @@ function App (){
   </Carousel.Item>
 </Carousel> */}
     
-    <div className='container'>
+    <div>
     <Routes>
       <Route exact path = "/" element = {<NewCalendar/>}/>
       <Route path = "/inventory" element = {<InventoryList/>}/>
