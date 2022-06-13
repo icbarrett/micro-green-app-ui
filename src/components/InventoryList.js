@@ -78,6 +78,7 @@ export default class InventoryList extends Component{
             <tr>
               <th>Seed Name</th>
               <th>Quantity</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
