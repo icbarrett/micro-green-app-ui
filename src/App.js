@@ -15,6 +15,7 @@ import OrdersList from "./components/OrdersList"
 import CustomerList from "./components/CustomerList.js";
 import CustomerAdd from "./components/CustomerAdd.js";
 import CustomerEdit from "./components/CustomerEdit.js";
+import DetailOrders from './components/DetailOrders.js';
 
 
 //import slideshow banner
@@ -72,14 +73,14 @@ function App (){
     
     <div>
     <Routes>
-      <Route exact path = "/" element = {<NewCalendar/>}/>
+      <Route exact path = "/" element = {<Home/>}/>
       <Route path = "/inventory" element = {<InventoryList/>}/>
       <Route path = "/inventory/add" element = {<Inventory/>}/>
       <Route path = "/inventory/delete/{seedId}" element = {<Inventory/>}/>
       <Route path = "/inventory/update/{seedId}" element = {<Inventory/>}/>
       <Route path = "/orders" element = {<OrdersList/>}/>
-      <Route path = "/orders/create" element = {<Orders/>}/>
-      {/* <Route path = "/orders/update/orderId" element = {</>}/> */}
+      <Route path = "/orders/:orderId" element = {<DetailOrders/>}/>
+      <Route path = "/orders/update/:orderId" element = {<Orders/>}/>
       <Route path = "/customers" element = {<CustomerList/>}/>
       <Route path = "/customers/add" element = {<CustomerAdd/>}/>
       <Route path = "/customers/{customerId}" element = {<CustomerEdit/>}/>

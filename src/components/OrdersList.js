@@ -1,8 +1,10 @@
 import { Component } from 'react';
-import {Table, Button, ButtonGroup} from 'react-bootstrap';
+import {Table, Button, ButtonGroup, Card} from 'react-bootstrap';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faTrash, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+import { faEdit, faTrash, faPlusSquare, faInfo } from '@fortawesome/free-solid-svg-icons';
+
 
 export default class OrdersList extends Component{
 
@@ -26,6 +28,7 @@ export default class OrdersList extends Component{
   });
 }
 
+
 deleteOrder = (orderId) => {
   axios.delete(`http://localhost:8080/orders/delete/${orderId}`)
   .then(response=>{
@@ -36,15 +39,18 @@ deleteOrder = (orderId) => {
       })
     }
   });
-  // alert(orderId);
 };
 
+// seedDetails(seedingDensity, seedPresoak, blackoutTime, harvestTime) {
+//   let txt = `Seeding Density: ${seedingDensity}\n` + `Seeding Presoak: ${seedPresoak}\n` + `Blackout Time: ${blackoutTime}\n` + `Harvest Time: ${harvestTime}`;
+//   alert(txt);
+// }
 
     render(){
       return (
         <div className = "container">
           <Button variant="dark" class="item" id="addOrdersBtn" onClick={()=>window.open("/orders/create", '_blank')}><FontAwesomeIcon icon = {faPlusSquare}/>ADD ORDERS</Button>
-          <h2 className='text-center'>List Orders</h2>
+          <h2 className='"text-center'>Orders</h2>
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -60,7 +66,7 @@ deleteOrder = (orderId) => {
           <tbody>
             {this.state.orders.length === 0 ? 
             <tr align = "center">
-              <td colSpan="6"> Orders</td>
+              <td colSpan="6">Orders</td>
             </tr>:
             this.state.orders.map((order) => (
               <tr key ={order.orderId}>
@@ -79,8 +85,10 @@ deleteOrder = (orderId) => {
 
                  <td>
                   <ButtonGroup>
-                  <button size = "sm" variant = "outline-primary"><FontAwesomeIcon icon = {faEdit}/></button>
-                  <button size = "sm" variant = "outline-primary" onClick= {this.deleteOrder.bind(this, order.orderId)} style = {{marginLeft:"10px"}}> <FontAwesomeIcon icon = {faTrash}/></button>
+                    <Link to = {`update/${order.orderId}`} className ="btn btn-sm btn-outline-primary"><FontAwesomeIcon icon = {faEdit}/></Link>
+                    <button size = "sm" variant = "outline-primary" onClick= {this.deleteOrder.bind(this, order.orderId)} style = {{marginLeft:"10px"}}> <FontAwesomeIcon icon = {faTrash}/></button>
+                    {/* <Link to = {`${order.orderId}`} className ="btn btn-sm btn-outline-primary" style = {{marginLeft:"10px"}}><FontAwesomeIcon icon = {faInfo}/></Link> */}
+                    {/* <button size = "sm" variant = "outline-primary" onClick={() => { this.seedDetails(seed.seedingDensity, seed.seedPresoak, seed.blackoutTime, seed.harvestTime)}}><FontAwesomeIcon icon = {faInfo}/></button> */}
                   </ButtonGroup>
                 </td>
               </tr>

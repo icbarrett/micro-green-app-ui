@@ -2,16 +2,19 @@ import React, { Component} from "react";
 import {Card, Form, Button, Col} from 'react-bootstrap'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUndo, faSave } from "@fortawesome/free-solid-svg-icons";
-import ToastAlerts from "./ToastAlerts";
-
+import { useParams } from "react-router-dom";
 
 import axios from "axios";
 
+function withParams(Component) {
+  return props => <Component {...props} params={useParams()} />;
+}
 
-export default class Orders extends Component{
+class Orders extends Component{
 
   constructor(props){
     super(props);
+    console.log(props);
     //state object stores property values that belong to the component
     this.state = this.initialState;
     this.orderChange = this.orderChange.bind(this);
@@ -19,7 +22,8 @@ export default class Orders extends Component{
   }
 
   initialState = {
-    customerId:null,
+    order:{
+    orderId: "",
     orderDate: '',
     deliveryDate: '',
     orderDetails: [ 
@@ -29,7 +33,7 @@ export default class Orders extends Component{
       seedName: ""
     },
     tray:{
-      trayType:""
+      size:""
     }
       }
     ],
@@ -37,14 +41,77 @@ export default class Orders extends Component{
       customerName:''
     }
     }
+    };
   
+    componentDidMount(){
+        const {orderId} = this.props.params;
+        if(orderId){
+          this.fetchData(orderId)
+        }
+      
+    }
+
+    fetchData = orderId =>{
+      
+      axios.get(`http://localhost:8080/orders/${orderId}`)
+      .then(response =>{
+        if (response.data!=null){
+            console.log(response.data)
+          this.setState({
+            orderId: response.data.orderId,
+            customerName: response.data.customer.customerName,
+            orderDate: response.data.orderDate,
+            deliveryDate: response.data.deliveryDate,
+            qty: response.data.orderDetails[0].qty,
+            seedName: response.data.orderDetails[0].seed.seedName,
+            size:response.data.orderDetails[0].tray.size
+          });
+        }
+      }).catch((error)=>{
+        console.log("Error:" +error);
+      });
+    }
+    
 
   resetOrder = ()=>{
     this.setState(()=>this.initialState);
-  }
+  };
+
+  updateOrder = event => {
+    event.preventDefault();
+
+    const {orderId} = this.props.params;
+    const order = {
+      orderId:this.state.orderId,
+      orderDate: this.state.orderDate,
+      deliveryDate: this.state.deliveryDate,
+      customer:{
+      customerName: this.state.customerName
+      },
+      orderDetails:[
+        {
+            qty: this.state.qty,
+            seed:{
+                seedName: this.state.seedName
+            },
+            tray:{
+                size:this.state.size
+            }
+        }
+      ]
+          }         
+
+    axios.put(`http://localhost:8080/orders/update/${orderId}`, order)
+    .then(response => {
+      if(response.data != null){
+        alert("Order updated successfully");
+        window.location.replace("http://localhost:3000/orders");
+      }
+  })
+}
+
 
   submitOrder = event => {
-    // alert('Customer Name: '+this.state.customerName+', Order Date: '+this.state.orderDate+', Delivery Date: '+this.state.deliveryDate+', Active Order: '+this.state.activeOrder+'');
     event.preventDefault();
 
     const order = {
@@ -62,7 +129,7 @@ export default class Orders extends Component{
           },
           tray:
           {
-            trayType:this.state.trayType
+            size:this.state.size
           }
         }      
         ]
@@ -77,6 +144,7 @@ export default class Orders extends Component{
     });
   }
 
+
   orderChange = event => {
     this.setState({
       [event.target.name]:event.target.value
@@ -85,12 +153,12 @@ export default class Orders extends Component{
 
   //add new order form
   render(){
-    const {customerName, seedName, trayType, qty, orderDate, deliveryDate} = this.state;
+    const {customerName, seedName, size, qty, orderDate, deliveryDate} = this.state;
 
     return (
-        <Card className="border border-dark formcard">
-        <Card.Header>Add New Order</Card.Header>
-        <Form onReset ={this.resetOrder} onSubmit={this.submitOrder} id = "orderFormId">
+      <Card className="border border-dark formcard">
+        <Card.Header>{this.state.orderId ? "Update Order" : "Add New Order"}</Card.Header>
+        <Form onReset ={this.resetOrder} onSubmit={this.state.orderId ? this.updateOrder :this.submitOrder} id = "orderFormId">
           <Card.Body>
     <Form.Group as = {Col}>
     <Form.Label>Customer Name</Form.Label>
@@ -109,11 +177,11 @@ export default class Orders extends Component{
     onChange={this.orderChange}/>
   </Form.Group>
   <Form.Group as = {Col}>
-    <Form.Label>Tray Type</Form.Label>
+    <Form.Label>Tray Size</Form.Label>
     <Form.Control required autoComplete="off"
-     type = "text" name = "trayType"
-    placeholder="Enter Tray Type"
-    value = {trayType}
+     type = "text" name = "size"
+    placeholder="Enter Tray size"
+    value = {size}
     onChange={this.orderChange}/>
   </Form.Group>
   <Form.Group as = {Col}>
@@ -144,7 +212,7 @@ export default class Orders extends Component{
 <Card.Footer>
   <Button  variant = "success" type="submit">
     <FontAwesomeIcon icon = {faSave}/>
-    Submit
+   {this.state.orderId ? "Update" : "Save"}
   </Button>{' '}
   <Button  variant = "info" type="reset">
     <FontAwesomeIcon icon = {faUndo}/>
@@ -156,3 +224,7 @@ export default class Orders extends Component{
          ) 
 }
 }
+
+
+export default withParams(Orders);
+
