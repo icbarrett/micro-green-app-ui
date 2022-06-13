@@ -1,9 +1,10 @@
 import { Component } from 'react';
-import {Table, Button, ButtonGroup} from 'react-bootstrap';
+import {Table, Button, ButtonGroup, Card} from 'react-bootstrap';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import { faEdit, faTrash, faPlusSquare, faInfo } from '@fortawesome/free-solid-svg-icons';
+
 
 export default class OrdersList extends Component{
 
@@ -40,14 +41,11 @@ deleteOrder = (orderId) => {
   });
 };
 
-
-
-
     render(){
       return (
         <div className = "container">
           <Button variant="dark" class="item" id="addOrdersBtn" onClick={()=>window.open("/orders/create", '_blank')}><FontAwesomeIcon icon = {faPlusSquare}/>ADD ORDERS</Button>
-          <h2 className='"text-center'>List Orders</h2>
+          <h2 className='"text-center'>Orders</h2>
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -63,7 +61,7 @@ deleteOrder = (orderId) => {
           <tbody>
             {this.state.orders.length === 0 ? 
             <tr align = "center">
-              <td colSpan="6"> Orders</td>
+              <td colSpan="6">Orders</td>
             </tr>:
             this.state.orders.map((order) => (
               <tr key ={order.orderId}>

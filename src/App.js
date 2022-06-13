@@ -17,12 +17,13 @@ import OrdersList from "./components/OrdersList"
 import CustomerList from "./components/CustomerList.js";
 import CustomerAdd from "./components/CustomerAdd.js";
 import CustomerEdit from "./components/CustomerEdit.js";
-import OrderDetails from './components/OrderDetails.js';
+import DetailOrders from './components/DetailOrders.js';
 
 
 //import banner
 import Banner from 'react-js-banner';
 import homepagepic from "./assets/homepagepicture.jpeg";
+
 
 
 function App (){
@@ -61,7 +62,7 @@ function App (){
       <Route path = "/inventory/delete/{seedId}" element = {<Inventory/>}/>
       <Route path = "/inventory/update/{seedId}" element = {<Inventory/>}/>
       <Route path = "/orders" element = {<OrdersList/>}/>
-      <Route path = "/orders/:orderId" element = {<OrderDetails/>}/>
+      <Route path = "/orders/:orderId" element = {<DetailOrders/>}/>
       <Route path = "/orders/update/:orderId" element = {<Orders/>}/>
       <Route path = "/customers" element = {<CustomerList/>}/>
       <Route path = "/customers/add" element = {<CustomerAdd/>}/>

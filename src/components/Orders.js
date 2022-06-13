@@ -95,7 +95,7 @@ class Orders extends Component{
                 seedName: this.state.seedName
             },
             tray:{
-                trayType:this.state.trayType
+                size:this.state.size
             }
         }
       ]
@@ -129,7 +129,7 @@ class Orders extends Component{
           },
           tray:
           {
-            trayType:this.state.trayType
+            size:this.state.size
           }
         }      
         ]
@@ -153,7 +153,7 @@ class Orders extends Component{
 
   //add new order form
   render(){
-    const {customerName, seedName, trayType, qty, orderDate, deliveryDate} = this.state;
+    const {customerName, seedName, size, qty, orderDate, deliveryDate} = this.state;
 
     return (
       <Card className="border border-dark ">
@@ -177,11 +177,11 @@ class Orders extends Component{
     onChange={this.orderChange}/>
   </Form.Group>
   <Form.Group as = {Col}>
-    <Form.Label>Tray Type</Form.Label>
+    <Form.Label>Tray Size</Form.Label>
     <Form.Control required autoComplete="off"
-     type = "text" name = "trayType"
-    placeholder="Enter Tray Type"
-    value = {trayType}
+     type = "text" name = "size"
+    placeholder="Enter Tray size"
+    value = {size}
     onChange={this.orderChange}/>
   </Form.Group>
   <Form.Group as = {Col}>
