@@ -34,7 +34,7 @@ updateCustomer(trayId, tray) {
 
   let oldTrayType = tray.trayType
   let newTrayType = window.prompt("Please input tray change", oldTrayType);
-    axios.put(`http://localhost:8080/tray/update/${trayId}`, {trayType: newTrayType}).then(response => response.data)
+    axios.put(`http://localhost:8080/trays/update/${trayId}`, {trayType: newTrayType}).then(response => response.data)
     .then(response =>  {
       console.log(response.data)
         this.setState({
@@ -71,7 +71,8 @@ deleteTray(trayId) {
         return (
         <div className = "container">
           <h2 className='text-center'>Tray</h2>
-            <Link to = {"/tray/add"}><Button variant="dark" class="item" id="addTrayBtn"><FontAwesomeIcon icon = {faPlusSquare}/>ADD TRAY</Button></Link>
+          
+            <Link to = {"/trays/add"}><Button variant="dark" class="item" id="addTrayBtn"><FontAwesomeIcon icon = {faPlusSquare}/>ADD TRAY</Button></Link>
             
         <Table striped bordered hover>
           <thead>
