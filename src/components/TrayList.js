@@ -63,7 +63,19 @@ deleteTray(trayId) {
   }
  
   alert(txt);
+
+ 
   
+}
+
+sortByAscending() {
+  let sortedAsceding = this.state.tray.sort((a, b) => {
+    return a.size - b.size;
+  });
+
+  this.setState({
+    data: sortedAsceding
+  });
 }
 
 
@@ -71,7 +83,7 @@ deleteTray(trayId) {
         return (
         <div className = "container">
           <h2 className='text-center'>Tray</h2>
-          
+
             <Link to = {"/trays/add"}><Button variant="dark" class="item" id="addTrayBtn"><FontAwesomeIcon icon = {faPlusSquare}/>ADD TRAY</Button></Link>
             
         <Table striped bordered hover>

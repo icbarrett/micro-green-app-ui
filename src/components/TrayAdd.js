@@ -1,8 +1,10 @@
 import { Component } from "react";
-import {Card, Form, Button, Col} from 'react-bootstrap'
+import {Card, Form, Button, Col, Constainer, Dropdown, ButtonGroup} from 'react-bootstrap'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUndo, faSave } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom"; 
+import 'bootstrap/dist/css/bootstrap.min.css';  
+
 
 import axios from "axios";
 
@@ -18,7 +20,8 @@ export default class Tray extends Component{
 
     initialState = {
         trayType: '',
-        size: ''
+        size: '',
+        qty: ''
     }
 
     resetTray = ()=>{
@@ -31,7 +34,9 @@ export default class Tray extends Component{
 
         const tray = {
             trayType: this.state.trayType,
-            size: this.state.size
+            size: this.state.size,
+            qty: this.state.qty
+
         };
 
         axios.post("http://localhost:8080/trays/add", tray)
@@ -52,12 +57,13 @@ export default class Tray extends Component{
     
   //add new tray form
     render(){
-        const {trayType, size} = this.state;
+        const {trayType, size, qty} = this.state;
 
         return (
             <Card className="border border-dark formcard">
                 <Card.Header>Add A New Tray</Card.Header>
                 <Form onReset ={this.resetTray} onSubmit={this.submitTray} id = "trayFormId">
+
                     <Card.Body>
                         <Form.Group as = {Col}>
                             <Form.Label>Tray Type</Form.Label>
@@ -68,6 +74,7 @@ export default class Tray extends Component{
                                 onChange={this.trayChange}/>
                         </Form.Group>  
                     </Card.Body>
+
                     <Card.Body>
                         <Form.Group as = {Col}>
                             <Form.Label>Tray Size</Form.Label>
@@ -75,6 +82,32 @@ export default class Tray extends Component{
                                 type = "text" name ="size"
                                 placeholder="Enter Tray Size"
                                 value = {size}
+                                onChange={this.trayChange}/>
+
+<Dropdown as={ButtonGroup}>  
+  <Button variant="success">Size</Button>  
+  
+  <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />  
+  
+  <Dropdown.Menu>  
+    <Dropdown.Item href="#/action-1">10x20</Dropdown.Item>  
+    <Dropdown.Item href="#/action-2">6x8</Dropdown.Item>  
+  </Dropdown.Menu>  
+</Dropdown>  
+  
+
+
+
+                        </Form.Group>  
+                    </Card.Body>
+
+                    <Card.Body>
+                        <Form.Group as = {Col}>
+                            <Form.Label>Quantity</Form.Label>
+                                <Form.Control required autoComplete="off"
+                                type = "text" name ="qty"
+                                placeholder="Enter Quantity"
+                                value = {qty}
                                 onChange={this.trayChange}/>
                         </Form.Group>  
                     </Card.Body>
@@ -89,6 +122,7 @@ export default class Tray extends Component{
                             Reset
                         </Button>
                     </Card.Footer>
+
                 </Form>
             </Card>
         ) 
