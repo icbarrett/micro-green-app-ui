@@ -15,6 +15,8 @@ import OrdersList from "./components/OrdersList"
 import CustomerList from "./components/CustomerList.js";
 import CustomerAdd from "./components/CustomerAdd.js";
 import CustomerEdit from "./components/CustomerEdit.js";
+import TrayList from "./components/TrayList.js";
+
 import DetailOrders from './components/DetailOrders.js';
 
 
@@ -84,6 +86,7 @@ function App (){
       <Route path = "/customers" element = {<CustomerList/>}/>
       <Route path = "/customers/add" element = {<CustomerAdd/>}/>
       <Route path = "/customers/{customerId}" element = {<CustomerEdit/>}/>
+      <Route path = "/trays" element = {<TrayList/>}/>
       <Route path = "/orders/add" element = {<Orders/>}/> 
       <Route path = "/NewCalendar" element = {<NewCalendar/>}/>
       <Route path = "/Home" element = {<Home/>}/>

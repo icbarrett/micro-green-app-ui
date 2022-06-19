@@ -33,8 +33,9 @@ return (
               <Nav className="me-auto">
                   <LinkContainer to = "/Home"><Nav.Link>Home</Nav.Link></LinkContainer>
                   <LinkContainer to = "/inventory"><Nav.Link>Inventory</Nav.Link></LinkContainer>
-                  <LinkContainer to = "/orders"><Nav.Link>Orders</Nav.Link></LinkContainer>
+                  <LinkContainer to = "/trays"><Nav.Link>Tray</Nav.Link></LinkContainer>
                   <LinkContainer to = "/customers"><Nav.Link>Customer</Nav.Link></LinkContainer>
+                  <LinkContainer to = "/orders"><Nav.Link>Orders</Nav.Link></LinkContainer>
                   <LinkContainer to = "/NewCalendar"><Nav.Link>Calendar</Nav.Link></LinkContainer>
               </Nav>
             </Navbar.Collapse>
